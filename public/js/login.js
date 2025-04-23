@@ -63,7 +63,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 sessionStorage.setItem('userId', userData.id);
                 
                 console.log('Login successful via API, redirecting to dashboard');
-                window.location.href = '/dashboard.html';
+                // Redirect based on user role
+                if (userData.role === 'admin') {
+                    window.location.href = '/admin-dashboard.html';
+                } else {
+                    window.location.href = '/dashboard.html';
+                }
             } 
             // Otherwise use mock login for demo purposes
             else {
@@ -99,7 +104,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     sessionStorage.setItem('userId', mockId);
                     
                     console.log('Login successful via mock auth, redirecting to dashboard');
-                    window.location.href = '/dashboard.html';
+                    // Redirect based on user role
+                    if (mockRole === 'admin') {
+                        window.location.href = '/admin-dashboard.html';
+                    } else {
+                        window.location.href = '/dashboard.html';
+                    }
                 } else {
                     // Show error message
                     showMessage('error', 'Login failed. Please check your credentials or use demo mode.');
