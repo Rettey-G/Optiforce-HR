@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "$2a$10$p.Ilm8AaB3DAltkahCGBwepCM.IDWuoaZFPs1kuAAzXQgii05lbp.",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "username": "user1",
+    "password": "$2a$10$X7Q8Y9Z0A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5Z",
+    "role": "user"
+  },
+  {
+    "id": 3,
+    "username": "user2",
+    "password": "$2a$10$X7Q8Y9Z0A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5Z",
+    "role": "user"
+  },
+  {
+    "id": 4,
+    "username": "user3",
+    "password": "$2a$10$X7Q8Y9Z0A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5Z",
+    "role": "user"
+  },
+  {
+    "id": 5,
+    "username": "user4",
+    "password": "$2a$10$X7Q8Y9Z0A1B2C3D4E5F6G7H8I9J0K1L2M3N4O5P6Q7R8S9T0U1V2W3X4Y5Z",
+    "role": "user"
+  }
+]

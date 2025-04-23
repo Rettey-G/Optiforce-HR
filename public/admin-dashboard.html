@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OptiForce HR - Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>OptiForce HR</h3>
+                <div class="profile-info">
+                    <img src="img/admin-avatar.png" alt="Admin" class="admin-avatar">
+                    <div class="admin-info">
+                        <h6 id="admin-name">Admin User</h6>
+                        <span id="admin-role">Administrator</span>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#" data-section="dashboard-section">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="user-management-section">
+                        <i class="fas fa-users-cog"></i> User Management
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="employee-management-section">
+                        <i class="fas fa-user-tie"></i> Employee Management
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="department-section">
+                        <i class="fas fa-building"></i> Departments
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="worksite-section">
+                        <i class="fas fa-map-marker-alt"></i> Worksites
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-section="system-settings-section">
+                        <i class="fas fa-cogs"></i> System Settings
+                    </a>
+                </li>
+
+                <li class="nav-divider"></li>
+                <li>
+                    <a href="/dashboard.html">
+                        <i class="fas fa-home"></i> Main Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/employees.html">
+                        <i class="fas fa-users"></i> Employees
+                    </a>
+                </li>
+                <li>
+                    <a href="/time_attendance.html">
+                        <i class="fas fa-clock"></i> Time & Attendance
+                    </a>
+                </li>
+                <li>
+                    <a href="/leave.html">
+                        <i class="fas fa-calendar-alt"></i> Leave
+                    </a>
+                </li>
+                <li>
+                    <a href="/payroll.html">
+                        <i class="fas fa-money-bill-wave"></i> Payroll
+                    </a>
+                </li>
+                <li>
+                    <a href="/reports.html">
+                        <i class="fas fa-chart-bar"></i> Reports
+                    </a>
+                </li>
+                <li>
+                    <a href="/training.html">
+                        <i class="fas fa-graduation-cap"></i> Training
+                    </a>
+                </li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a href="#" id="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="dropdown me-3">
+                            <button class="btn position-relative" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    3
+                                </span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
+                                <li><h6 class="dropdown-header">Notifications</h6></li>
+                                <li><a class="dropdown-item" href="#">New employee registration</a></li>
+                                <li><a class="dropdown-item" href="#">Leave request pending</a></li>
+                                <li><a class="dropdown-item" href="#">System update available</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="img/admin-avatar.png" alt="Admin" class="admin-mini-avatar">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" id="dropdown-logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Dashboard Section -->
+            <div class="content-section active" id="dashboard-section">
+                <h2>Admin Dashboard</h2>
+                <div class="row mt-4">
+                    <div class="col-md-3 mb-4">
+                        <div class="card dashboard-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2 text-muted">Total Employees</h6>
+                                        <h3 class="card-title mb-0" id="total-employees">0</h3>
+                                    </div>
+                                    <div class="dashboard-icon bg-primary">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card dashboard-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2 text-muted">Departments</h6>
+                                        <h3 class="card-title mb-0" id="total-departments">0</h3>
+                                    </div>
+                                    <div class="dashboard-icon bg-success">
+                                        <i class="fas fa-building"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card dashboard-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2 text-muted">Worksites</h6>
+                                        <h3 class="card-title mb-0" id="total-worksites">0</h3>
+                                    </div>
+                                    <div class="dashboard-icon bg-warning">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card dashboard-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2 text-muted">System Users</h6>
+                                        <h3 class="card-title mb-0" id="total-users">0</h3>
+                                    </div>
+                                    <div class="dashboard-icon bg-danger">
+                                        <i class="fas fa-user-shield"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-8 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Recent Activities</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Action</th>
+                                                <th>Employee</th>
+                                                <th>Timestamp</th>
+                                                <th>By</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="recent-activities">
+                                            <!-- Activities will be loaded here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Department Distribution</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="department-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Management Section -->
+            <div class="content-section" id="user-management-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>User Management</h2>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">
+                        <i class="fas fa-plus"></i> Add New User
+                    </button>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Username</th>
+                                        <th>Role</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="users-table">
+                                    <!-- Users will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Employee Management Section -->
+            <div class="content-section" id="employee-management-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Employee Management</h2>
+                    <a href="/employees.html" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i> Go to Employee Page
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Emp No</th>
+                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Designation</th>
+                                        <th>Worksite</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="employees-table">
+                                    <!-- Employees will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Department Section -->
+            <div class="content-section" id="department-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Departments</h2>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDepartmentModal">
+                        <i class="fas fa-plus"></i> Add Department
+                    </button>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Department Name</th>
+                                        <th>Description</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="departments-table">
+                                    <!-- Departments will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Worksite Section -->
+            <div class="content-section" id="worksite-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Worksites</h2>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addWorksiteModal">
+                        <i class="fas fa-plus"></i> Add Worksite
+                    </button>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Worksite Name</th>
+                                        <th>Location</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="worksites-table">
+                                    <!-- Worksites will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Settings Section -->
+            <div class="content-section" id="system-settings-section">
+                <h2>System Settings</h2>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">General Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="general-settings-form">
+                                    <div class="mb-3">
+                                        <label for="company-name" class="form-label">Company Name</label>
+                                        <input type="text" class="form-control" id="company-name" value="OptiForce HR">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="company-email" class="form-label">Company Email</label>
+                                        <input type="email" class="form-control" id="company-email" value="info@optiforce.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="company-phone" class="form-label">Company Phone</label>
+                                        <input type="text" class="form-control" id="company-phone" value="+1 (123) 456-7890">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">System Backup</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Last backup: <span id="last-backup-date">Never</span></p>
+                                <button class="btn btn-primary" id="backup-btn">
+                                    <i class="fas fa-download"></i> Backup System Data
+                                </button>
+                                <hr>
+                                <h6>Restore from backup</h6>
+                                <div class="input-group">
+                                    <input type="file" class="form-control" id="restore-file">
+                                    <button class="btn btn-outline-secondary" type="button" id="restore-btn">Restore</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addUserModalLabel">Add New User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="add-user-form">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm-password" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirm-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Role</label>
+                            <select class="form-select" id="role" required>
+                                <option value="admin">Admin</option>
+                                <option value="user" selected>User</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save-user-btn">Add User</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-user-form">
+                        <input type="hidden" id="edit-user-id">
+                        <div class="mb-3">
+                            <label for="edit-username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="edit-username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-password" class="form-label">New Password (leave blank to keep current)</label>
+                            <input type="password" class="form-control" id="edit-password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-role" class="form-label">Role</label>
+                            <select class="form-select" id="edit-role" required>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="update-user-btn">Update User</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Department Modal -->
+    <div class="modal fade" id="addDepartmentModal" tabindex="-1" aria-labelledby="addDepartmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addDepartmentModalLabel">Add Department</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="add-department-form">
+                        <div class="mb-3">
+                            <label for="department-name" class="form-label">Department Name</label>
+                            <input type="text" class="form-control" id="department-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="department-description" class="form-label">Description</label>
+                            <textarea class="form-control" id="department-description" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save-department-btn">Add Department</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Worksite Modal -->
+    <div class="modal fade" id="addWorksiteModal" tabindex="-1" aria-labelledby="addWorksiteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addWorksiteModalLabel">Add Worksite</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="add-worksite-form">
+                        <div class="mb-3">
+                            <label for="worksite-name" class="form-label">Worksite Name</label>
+                            <input type="text" class="form-control" id="worksite-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="worksite-location" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="worksite-location" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save-worksite-btn">Add Worksite</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset Password Modal -->
+    <div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resetPasswordModalLabel">Reset Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reset-password-form">
+                        <input type="hidden" id="reset-user-id">
+                        <p>Reset password for user: <strong id="reset-username"></strong></p>
+                        <div class="mb-3">
+                            <label for="new-password" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="new-password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm-new-password" class="form-label">Confirm New Password</label>
+                            <input type="password" class="form-control" id="confirm-new-password" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="confirm-reset-btn">Reset Password</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">Confirm Action</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmation-message">Are you sure you want to proceed with this action?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirm-action-btn">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

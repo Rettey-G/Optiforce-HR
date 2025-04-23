@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Management - OptiForce HR</title>
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/header-footer.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/training.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add Chart.js for training analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .layout-wrapper {
+            flex: 1;
+            margin-top: 30px; /* Reduced margin to account for fixed navbar */
+        }
+        .page-header {
+            background-color: #f8f9fa;
+            padding: 0.5rem 0;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .page-header h1 {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+        }
+        .sidebar-header h3 {
+            font-size: 1.1rem;
+        }
+        .card {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: none;
+            margin-bottom: 1.5rem;
+        }
+        /* Fix for training page layout */
+        .sidebar {
+            height: calc(100vh - 90px);
+            position: sticky;
+            top: 90px;
+        }
+        .main-content {
+            padding: 1rem;
+        }
+        /* Responsive fixes */
+        @media (max-width: 768px) {
+            .sidebar {
+                height: auto;
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Training Management</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Training Management</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="layout-wrapper">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h3>Training</h3>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active"><a href="#overview"><i class="fas fa-th-large"></i> Overview</a></li>
+                <li><a href="#trainers"><i class="fas fa-chalkboard-teacher"></i> Trainers</a></li>
+                <li><a href="#programs"><i class="fas fa-book"></i> Programs</a></li>
+                <li><a href="#calendar"><i class="fas fa-calendar-alt"></i> Calendar</a></li>
+                <li><a href="#participants"><i class="fas fa-users"></i> Participants</a></li>
+                <li><a href="#reports"><i class="fas fa-chart-bar"></i> Reports</a></li>
+                <li><a href="#settings"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+        <div class="content-wrapper">
+            <header class="header">
+                <div class="header-title">
+                    <h1>Training Management</h1>
+                </div>
+                <div class="header-actions">
+                    <button id="addTrainingBtn" class="primary-btn">
+                        <i class="fas fa-plus"></i> Add Training
+                    </button>
+                </div>
+            </header>
+            <main class="main-content">
+                <!-- Dashboard Overview Section -->
+                <section id="overview" class="section-container">
+                    <div class="section-header">
+                        <h2><i class="fas fa-th-large"></i> Training Dashboard</h2>
+                    </div>
+                    
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-book"></i></div>
+                            <div class="stat-info">
+                                <h3>Total Programs</h3>
+                                <p id="totalPrograms">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                            <div class="stat-info">
+                                <h3>Active Trainers</h3>
+                                <p id="activeTrainers">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-users"></i></div>
+                            <div class="stat-info">
+                                <h3>Participants</h3>
+                                <p id="totalParticipants">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                            <div class="stat-info">
+                                <h3>Upcoming</h3>
+                                <p id="upcomingTrainings">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="charts-row">
+                        <div class="chart-container">
+                            <h3>Training by Department</h3>
+                            <canvas id="departmentTrainingChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <h3>Training by Type</h3>
+                            <canvas id="trainingTypeChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="upcoming-trainings">
+                        <h3>Upcoming Trainings</h3>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Training Name</th>
+                                        <th>Type</th>
+                                        <th>Start Date</th>
+                                        <th>Trainer</th>
+                                        <th>Participants</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="upcomingTrainingsTable">
+                                    <!-- Upcoming trainings will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Trainers Section -->
+                <section id="trainers" class="section-container">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chalkboard-teacher"></i> Trainers</h2>
+                        <button id="addTrainerBtn" class="secondary-btn">
+                            <i class="fas fa-user-plus"></i> Add Trainer
+                        </button>
+                    </div>
+                    
+                    <div class="search-filter-bar">
+                        <div class="search-box">
+                            <input type="text" id="searchTrainer" placeholder="Search trainers...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="filter-box">
+                            <select id="expertiseFilter">
+                                <option value="">All Expertise</option>
+                                <option value="technical">Technical</option>
+                                <option value="soft-skills">Soft Skills</option>
+                                <option value="leadership">Leadership</option>
+                                <option value="compliance">Compliance</option>
+                                <option value="safety">Safety</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="trainersContainer" class="trainers-grid">
+                        <!-- Trainers will be loaded here -->
+                    </div>
+                </section>
+                
+                <!-- Training Programs Section -->
+                <section id="programs" class="section-container">
+                    <div class="section-header">
+                        <h2><i class="fas fa-book"></i> Training Programs</h2>
+                        <div class="header-actions">
+                            <button id="importTrainingsBtn" class="secondary-btn">
+                                <i class="fas fa-file-import"></i> Import
+                            </button>
+                            <button id="exportTrainingsBtn" class="secondary-btn">
+                                <i class="fas fa-file-export"></i> Export
+                            </button>
+                            <button id="addProgramBtn" class="primary-btn">
+                                <i class="fas fa-plus"></i> Add Program
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-filter-bar">
+                        <div class="search-box">
+                            <input type="text" id="searchTraining" placeholder="Search training programs...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="filter-group">
+                            <select id="typeFilter">
+                                <option value="">All Types</option>
+                                <option value="technical">Technical</option>
+                                <option value="soft-skills">Soft Skills</option>
+                                <option value="leadership">Leadership</option>
+                                <option value="compliance">Compliance</option>
+                                <option value="safety">Safety</option>
+                            </select>
+                            <select id="statusFilter">
+                                <option value="">All Status</option>
+                                <option value="upcoming">Upcoming</option>
+                                <option value="in-progress">In Progress</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                            <select id="worksiteFilter">
+                                <option value="">All Worksites</option>
+                                <!-- Worksites will be loaded here -->
+                            </select>
+                            <select id="departmentFilter">
+                                <option value="">All Departments</option>
+                                <!-- Departments will be loaded here -->
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="trainingProgramsContainer" class="training-programs-container"></div>
+                </section>
+                
+                <!-- Training Calendar Section -->
+                <section id="calendar" class="section-container">
+                    <div class="section-header">
+                        <h2><i class="fas fa-calendar-alt"></i> Training Calendar</h2>
+                        <div class="header-actions">
+                            <button id="printCalendarBtn" class="secondary-btn">
+                                <i class="fas fa-print"></i> Print
+                            </button>
+                            <div class="calendar-view-controls">
+                                <button class="view-btn active" data-view="month">Month</button>
+                                <button class="view-btn" data-view="week">Week</button>
+                                <button class="view-btn" data-view="day">Day</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="calendar-navigation">
+                        <button id="prevBtn" class="nav-btn"><i class="fas fa-chevron-left"></i></button>
+                        <h3 id="currentPeriod">April 2025</h3>
+                        <button id="nextBtn" class="nav-btn"><i class="fas fa-chevron-right"></i></button>
+                        <button id="todayBtn" class="today-btn">Today</button>
+                    </div>
+                    <div id="trainingCalendar" class="training-calendar"></div>
+                </section>
+                
+                <!-- Participants Section -->
+                <section id="participants" class="section-container">
+                    <div class="section-header">
+                        <h2><i class="fas fa-users"></i> Participants</h2>
+                        <div class="header-actions">
+                            <button id="assignParticipantsBtn" class="primary-btn">
+                                <i class="fas fa-user-plus"></i> Assign Participants
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="search-filter-bar">
+                        <div class="search-box">
+                            <input type="text" id="searchParticipant" placeholder="Search participants...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="filter-group">
+                            <select id="trainingFilterForParticipants">
+                                <option value="">All Trainings</option>
+                                <!-- Training programs will be loaded here -->
+                            </select>
+                            <select id="departmentFilterForParticipants">
+                                <option value="">All Departments</option>
+                                <!-- Departments will be loaded here -->
+                            </select>
+                            <select id="worksiteFilterForParticipants">
+                                <option value="">All Worksites</option>
+                                <!-- Worksites will be loaded here -->
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                    <th>Worksite</th>
+                                    <th>Training</th>
+                                    <th>Start Date</th>
+                                    <th>Status</th>
+                                    <th>Completion</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="participantsTable">
+                                <!-- Participants will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Reports Section -->
+                <section id="reports" class="section-container">
+                    <div class="section-header">
+                        <h2><i class="fas fa-chart-bar"></i> Training Reports</h2>
+                        <div class="header-actions">
+                            <button id="generateReportBtn" class="primary-btn">
+                                <i class="fas fa-file-export"></i> Generate Report
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="report-filters">
+                        <div class="form-group">
+                            <label for="reportType">Report Type</label>
+                            <select id="reportType">
+                                <option value="completion">Training Completion</option>
+                                <option value="participation">Participation by Department</option>
+                                <option value="effectiveness">Training Effectiveness</option>
+                                <option value="cost">Training Cost Analysis</option>
+                                <option value="compliance">Compliance Status</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reportPeriod">Period</label>
+                            <select id="reportPeriod">
+                                <option value="current-month">Current Month</option>
+                                <option value="last-month">Last Month</option>
+                                <option value="current-quarter">Current Quarter</option>
+                                <option value="last-quarter">Last Quarter</option>
+                                <option value="current-year">Current Year</option>
+                                <option value="custom">Custom Range</option>
+                            </select>
+                        </div>
+                        <div class="form-group date-range" style="display: none;">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" id="startDate">
+                        </div>
+                        <div class="form-group date-range" style="display: none;">
+                            <label for="endDate">End Date</label>
+                            <input type="date" id="endDate">
+                        </div>
+                        <button id="applyReportFilters" class="secondary-btn">Apply Filters</button>
+                    </div>
+                    
+                    <div class="report-container">
+                        <div class="report-summary">
+                            <div class="summary-card">
+                                <h3>Total Trainings</h3>
+                                <p id="reportTotalTrainings">0</p>
+                            </div>
+                            <div class="summary-card">
+                                <h3>Completion Rate</h3>
+                                <p id="reportCompletionRate">0%</p>
+                            </div>
+                            <div class="summary-card">
+                                <h3>Participants</h3>
+                                <p id="reportTotalParticipants">0</p>
+                            </div>
+                            <div class="summary-card">
+                                <h3>Avg. Satisfaction</h3>
+                                <p id="reportAvgSatisfaction">0/5</p>
+                            </div>
+                        </div>
+                        
+                        <div class="report-charts">
+                            <div class="chart-container">
+                                <h3 id="reportChartTitle">Training Completion by Department</h3>
+                                <canvas id="reportChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="report-table-container">
+                            <h3>Detailed Report</h3>
+                            <div class="table-responsive">
+                                <table class="data-table" id="reportTable">
+                                    <!-- Report data will be loaded here -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Settings Section -->
+                <section id="settings" class="section-container">
+                    <div class="section-header">
+                        <h2><i class="fas fa-cog"></i> Training Settings</h2>
+                        <button id="saveSettingsBtn" class="primary-btn">
+                            <i class="fas fa-save"></i> Save Settings
+                        </button>
+                    </div>
+                    
+                    <div class="settings-container">
+                        <div class="settings-group">
+                            <h3>General Settings</h3>
+                            <div class="form-group">
+                                <label for="defaultTrainingDuration">Default Training Duration (days)</label>
+                                <input type="number" id="defaultTrainingDuration" min="1" value="3">
+                            </div>
+                            <div class="form-group">
+                                <label for="maxParticipantsDefault">Default Max Participants</label>
+                                <input type="number" id="maxParticipantsDefault" min="1" value="20">
+                            </div>
+                            <div class="form-group">
+                                <label for="reminderDays">Send Reminders (days before)</label>
+                                <input type="number" id="reminderDays" min="1" value="2">
+                            </div>
+                            <div class="form-group">
+                                <label for="feedbackReminderDays">Feedback Reminder (days after)</label>
+                                <input type="number" id="feedbackReminderDays" min="1" value="1">
+                            </div>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <h3>Training Categories</h3>
+                            <div id="trainingCategories" class="categories-container">
+                                <div class="category-item">
+                                    <span>Technical</span>
+                                    <button class="delete-btn"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="category-item">
+                                    <span>Soft Skills</span>
+                                    <button class="delete-btn"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="category-item">
+                                    <span>Leadership</span>
+                                    <button class="delete-btn"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="category-item">
+                                    <span>Compliance</span>
+                                    <button class="delete-btn"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="category-item">
+                                    <span>Safety</span>
+                                    <button class="delete-btn"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="add-category">
+                                <input type="text" id="newCategory" placeholder="New category name">
+                                <button id="addCategoryBtn" class="secondary-btn">Add</button>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <h3>Notifications</h3>
+                            <div class="form-check">
+                                <input type="checkbox" id="emailNotifications" checked>
+                                <label for="emailNotifications">Email Notifications</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="smsNotifications">
+                                <label for="smsNotifications">SMS Notifications</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="reminderNotifications" checked>
+                                <label for="reminderNotifications">Training Reminders</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" id="completionNotifications" checked>
+                                <label for="completionNotifications">Completion Notifications</label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Add/Edit Trainer Modal -->
+    <div id="trainerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="trainerModalTitle">Add Trainer</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <form id="trainerForm">
+                <div class="form-group">
+                    <label for="trainerName">Name</label>
+                    <input type="text" id="trainerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="trainerSpecialization">Specialization</label>
+                    <input type="text" id="trainerSpecialization" required>
+                </div>
+                <div class="form-group">
+                    <label for="trainerQualifications">Qualifications</label>
+                    <textarea id="trainerQualifications" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="trainerContact">Contact</label>
+                    <input type="text" id="trainerContact" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="save-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add/Edit Training Modal -->
+    <div id="trainingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="trainingModalTitle">Add Training Program</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <form id="trainingForm">
+                <div class="form-group">
+                    <label for="trainingTitle">Title</label>
+                    <input type="text" id="trainingTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="trainingDescription">Description</label>
+                    <textarea id="trainingDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="trainingType">Type</label>
+                    <select id="trainingType" required>
+                        <option value="">Select Type</option>
+                        <option value="Technical">Technical</option>
+                        <option value="Soft Skills">Soft Skills</option>
+                        <option value="Safety">Safety</option>
+                        <option value="Compliance">Compliance</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="trainingWorksite">Worksite</label>
+                    <select id="trainingWorksite" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="trainingTrainer">Trainer</label>
+                    <select id="trainingTrainer" required></select>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="trainingStartDate">Start Date</label>
+                        <input type="date" id="trainingStartDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="trainingEndDate">End Date</label>
+                        <input type="date" id="trainingEndDate" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="trainingCapacity">Maximum Participants</label>
+                    <input type="number" id="trainingCapacity" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Assign Employees</label>
+                    <div id="employeeSelection" class="employee-selection">
+                        <!-- Employee checkboxes will be populated dynamically -->
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="save-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Training Details Modal -->
+    <div id="viewTrainingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Training Details</h2>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div id="trainingDetails" class="training-details"></div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="/js/layout.js"></script>
+    <script src="js/training.js"></script>
+</body>
+</html>

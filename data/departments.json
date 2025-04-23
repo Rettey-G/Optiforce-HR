@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "1",
+    "name": "Admin",
+    "description": ""
+  },
+  {
+    "_id": "2",
+    "name": "Operations",
+    "description": ""
+  },
+  {
+    "_id": "3",
+    "name": "Finance",
+    "description": ""
+  },
+  {
+    "_id": "4",
+    "name": "Engineering",
+    "description": ""
+  },
+  {
+    "_id": "5",
+    "name": "Sales & Marketing",
+    "description": ""
+  },
+  {
+    "name": "badhige",
+    "headId": "",
+    "description": "cook",
+    "id": "mjbm1q1fa",
+    "createdAt": "2025-04-22T04:18:15.357Z"
+  }
+]

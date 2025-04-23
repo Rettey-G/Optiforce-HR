@@ -1,0 +1,11 @@
+/* Import all CSS files */
+@import 'layout.css';
+@import 'main.css';
+@import 'components.css';
+@import 'header-footer.css';
+@import 'dashboard.css';
+@import 'employees.css';
+@import 'attendance.css';
+@import 'time_attendance.css';
+@import 'activities.css';
+@import 'nav.css'; 

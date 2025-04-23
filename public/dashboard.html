@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optiforce HR - Dashboard</title>
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/header-footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Add Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    
+    <!-- Main Content -->
+    <main class="dashboard-container">
+        <!-- Statistics Section -->
+        <section class="stats-container">
+            <div class="stat-card">
+                <h3><i class="fas fa-users"></i> Total Employees</h3>
+                <div class="stat-number" id="total-employees">0</div>
+                <div class="stat-detail">
+                    <h4>By Department</h4>
+                    <ul class="stat-list" id="department-stats"></ul>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <h3><i class="fas fa-building"></i> Departments</h3>
+                <div class="stat-number" id="total-departments">0</div>
+                <div class="stat-detail">
+                    <canvas id="departmentChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <h3><i class="fas fa-globe"></i> Nationalities</h3>
+                <div class="stat-number" id="total-nationalities">0</div>
+                <div class="stat-detail">
+                    <canvas id="nationalityChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <h3><i class="fas fa-map-marker-alt"></i> Work Sites</h3>
+                <div class="stat-number" id="total-worksites">0</div>
+                <div class="stat-detail">
+                    <canvas id="worksiteChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+            <div class="chart-container">
+                <h3>Employee Growth</h3>
+                <canvas id="growthChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Gender Distribution</h3>
+                <canvas id="genderChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Recent Activities -->
+        <div class="chart-container activities-section">
+            <div class="activities-header">
+                <h3>Recent Activities</h3>
+                <button id="viewAllActivities" class="view-all-btn">View All</button>
+            </div>
+            <div id="activitiesList" class="activities-list">
+                <!-- Activities will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Modal for viewing all activities -->
+    <div id="activitiesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>All Activities</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div id="allActivitiesList" class="activities-list">
+                <!-- All activities will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/layout.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

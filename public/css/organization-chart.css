@@ -1,0 +1,306 @@
+/* Organization Chart CSS */
+
+/* Chart container */
+.chart-container {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    overflow: auto;
+}
+
+/* Loading indicator */
+.chart-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* Google Org Chart customization */
+.google-visualization-orgchart-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.google-visualization-orgchart-node {
+    border: 2px solid #4e73df;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    font-family: 'Nunito', 'Segoe UI', Roboto, Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fc);
+    transition: all 0.3s ease;
+}
+
+.google-visualization-orgchart-node:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.google-visualization-orgchart-lineleft,
+.google-visualization-orgchart-lineright,
+.google-visualization-orgchart-linebottom {
+    border-color: #4e73df;
+}
+
+/* Node types */
+.node-ceo {
+    background: linear-gradient(to bottom, #4e73df, #224abe) !important;
+    color: white !important;
+    font-weight: bold;
+    border-color: #224abe !important;
+}
+
+.node-director {
+    background: linear-gradient(to bottom, #1cc88a, #169a6b) !important;
+    color: white !important;
+    font-weight: bold;
+    border-color: #169a6b !important;
+}
+
+.node-manager {
+    background: linear-gradient(to bottom, #36b9cc, #258391) !important;
+    color: white !important;
+    font-weight: bold;
+    border-color: #258391 !important;
+}
+
+.node-department {
+    background: linear-gradient(to bottom, #f6c23e, #dda20a) !important;
+    color: white !important;
+    font-weight: bold;
+    border-color: #dda20a !important;
+}
+
+.node-worksite {
+    background: linear-gradient(to bottom, #e74a3b, #be2617) !important;
+    color: white !important;
+    font-weight: bold;
+    border-color: #be2617 !important;
+}
+
+.node-employee {
+    background: linear-gradient(to bottom, #ffffff, #f8f9fc) !important;
+    color: #5a5c69 !important;
+    border-color: #dddfeb !important;
+}
+
+/* Employee node with image */
+.employee-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+    cursor: pointer;
+}
+
+.employee-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4e73df;
+    margin-bottom: 5px;
+}
+
+.employee-name {
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0;
+    text-align: center;
+}
+
+.employee-title {
+    font-size: 10px;
+    color: #858796;
+    margin: 0;
+    text-align: center;
+}
+
+/* Department node */
+.department-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 150px;
+    cursor: pointer;
+}
+
+.department-icon {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.department-name {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
+}
+
+.department-count {
+    font-size: 12px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Worksite node */
+.worksite-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 150px;
+    cursor: pointer;
+}
+
+.worksite-icon {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.worksite-name {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
+}
+
+.worksite-location {
+    font-size: 12px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Company node */
+.company-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 200px;
+}
+
+.company-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4e73df;
+    margin-bottom: 5px;
+}
+
+.company-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0;
+    text-align: center;
+}
+
+.company-tagline {
+    font-size: 12px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Employee modal image */
+.employee-modal-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #4e73df;
+}
+
+/* Toggle view button styles */
+.view-toggle-btn {
+    margin-right: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 400px;
+    }
+    
+    .employee-node, .department-node, .worksite-node {
+        min-width: 100px;
+    }
+    
+    .employee-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .company-logo {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Animation for chart loading */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.google-visualization-orgchart-table {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Zoom controls */
+.zoom-controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    z-index: 100;
+}
+
+.zoom-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #f8f9fc;
+    border-radius: 3px;
+    margin: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.zoom-btn:hover {
+    background-color: #eaecf4;
+}
+
+/* Print styles */
+@media print {
+    #sidebar, .navbar, .nav-tabs, .btn, .modal {
+        display: none !important;
+    }
+    
+    #content {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .chart-container {
+        height: auto !important;
+        overflow: visible !important;
+    }
+    
+    .card {
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    .google-visualization-orgchart-node {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+}

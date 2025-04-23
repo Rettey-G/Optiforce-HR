@@ -1,0 +1,60 @@
+[
+  {
+    "_id": "6805fd8239a662bfca9ff0b3",
+    "leaveType": "family",
+    "startDate": "2025-04-21",
+    "endDate": "2025-05-02",
+    "reason": "addsdsd",
+    "days": 10,
+    "userId": "user1",
+    "createdAt": "2025-04-21T08:10:42.944+00:00",
+    "status": "approved",
+    "year": 2025,
+    "updatedAt": "2025-04-21T09:33:38.311+00:00",
+    "updatedBy": "System"
+  },
+  {
+    "_id": "6805fe8cf5f39381297912da",
+    "leaveType": "sick",
+    "startDate": "2025-04-16",
+    "endDate": "2025-04-23",
+    "reason": "sick",
+    "days": 6,
+    "userId": "user1",
+    "createdAt": "2025-04-21T08:15:08.088+00:00",
+    "status": "approved",
+    "year": 2025,
+    "updatedAt": "2025-04-21T09:33:34.809+00:00",
+    "updatedBy": "System"
+  },
+  {
+    "_id": "6806101a7b50ab05a245d41a",
+    "employeeId": "6804861e124b89363d94746e",
+    "leaveType": "emergency",
+    "startDate": "2025-04-21",
+    "endDate": "2025-05-02",
+    "reason": "SAsS",
+    "days": 10,
+    "employeeName": "Ahmed Hussain",
+    "createdAt": "2025-04-21T09:30:02.204+00:00",
+    "status": "approved",
+    "year": 2025,
+    "updatedAt": "2025-04-21T09:33:30.692+00:00",
+    "updatedBy": "System"
+  },
+  {
+    "_id": "680610dab3ae84a0c0a06e03",
+    "employeeId": "6804861e124b89363d94746b",
+    "leaveType": "emergency",
+    "startDate": "2025-04-21",
+    "endDate": "2025-04-30",
+    "reason": "QWERTY",
+    "days": 8,
+    "employeeName": "Ahmed Sinaz",
+    "createdAt": "2025-04-21T09:33:14.844+00:00",
+    "status": "approved",
+    "year": 2025,
+    "updatedAt": "2025-04-21T09:33:24.212+00:00",
+    "updatedBy": "System"
+  }
+]

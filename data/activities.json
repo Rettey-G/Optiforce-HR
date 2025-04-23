@@ -1,0 +1,1783 @@
+{
+  "recent": [
+    {
+      "action": "processed",
+      "type": "payroll",
+      "details": "Processed payroll for 2025-04",
+      "timestamp": "2025-04-23T09:03:44.949Z",
+      "by": "Admin"
+    },
+    {
+      "action": "processed",
+      "type": "payroll",
+      "details": "Processed payroll for 2025-04",
+      "timestamp": "2025-04-23T09:03:44.944Z",
+      "by": "Admin"
+    },
+    {
+      "action": "processed",
+      "type": "payroll",
+      "details": "Processed payroll for 2025-04",
+      "timestamp": "2025-04-23T08:54:59.831Z",
+      "by": "Admin"
+    },
+    {
+      "action": "processed",
+      "type": "payroll",
+      "details": "Processed payroll for 2025-04",
+      "timestamp": "2025-04-23T08:54:59.823Z",
+      "by": "Admin"
+    },
+    {
+      "action": "processed",
+      "type": "payroll",
+      "details": "Processed payroll for 2025-04",
+      "timestamp": "2025-04-23T07:38:28.017Z",
+      "by": "Admin"
+    },
+    {
+      "action": "processed",
+      "type": "payroll",
+      "details": "Processed payroll for 2025-04",
+      "timestamp": "2025-04-23T07:37:20.137Z",
+      "by": "Admin"
+    },
+    {
+      "action": "processed",
+      "type": "payroll",
+      "details": "Processed payroll for 2025-05",
+      "timestamp": "2025-04-23T06:43:01.122Z",
+      "by": "Admin"
+    },
+    {
+      "action": "added",
+      "type": "deduction to payroll",
+      "details": "Added bill (22 USD) to employee FEM001",
+      "timestamp": "2025-04-23T06:41:09.316Z",
+      "by": "Admin"
+    },
+    {
+      "action": "processed",
+      "type": "payroll",
+      "details": "Processed payroll for 2025-04",
+      "timestamp": "2025-04-23T06:39:10.443Z",
+      "by": "Admin"
+    },
+    {
+      "action": "added",
+      "type": "deduction to payroll",
+      "details": "Added bill (22 USD) to employee FEM001",
+      "timestamp": "2025-04-23T06:38:40.608Z",
+      "by": "Admin"
+    },
+    {
+      "action": "processed",
+      "type": "payroll",
+      "details": "Processed payroll for 2025-04",
+      "timestamp": "2025-04-23T06:38:04.353Z",
+      "by": "Admin"
+    },
+    {
+      "action": "deleted",
+      "Employee Name": "Abdul Rahman Gasim",
+      "Designation": "Managing Director",
+      "timestamp": "2025-04-23T06:05:43.850Z",
+      "by": "Admin"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T17:40:55.278Z",
+      "id": "b1knx72bt"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T17:51:17.062Z",
+      "id": "feyh9vxvx"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T17:51:18.383Z",
+      "id": "et7fysg1q"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T17:57:28.099Z",
+      "id": "hnia18nf6"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T17:57:45.441Z",
+      "id": "btzbip86a"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:03:09.837Z",
+      "id": "6ksc90iya"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:03:11.050Z",
+      "id": "kffrej3a3"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:03:11.284Z",
+      "id": "grcz3t67t"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:03:13.305Z",
+      "id": "xv0golp8x"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:05:15.478Z",
+      "id": "vs0gbcudh"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:05:21.307Z",
+      "id": "ydem4pajw"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:06:54.735Z",
+      "id": "y4e4302yz"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Leave Management - OptiForce HR page",
+      "timestamp": "2025-04-21T18:14:15.857Z",
+      "id": "z3y3ix8un"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Leave Management - OptiForce HR page",
+      "timestamp": "2025-04-21T18:14:21.975Z",
+      "id": "099gmfadn"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Payroll Management - OptiForce HR page",
+      "timestamp": "2025-04-21T18:14:23.939Z",
+      "id": "115kb4r1b"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Reports - OptiForce HR page",
+      "timestamp": "2025-04-21T18:14:28.135Z",
+      "id": "1mgf99h7t"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Training Management - OptiForce HR page",
+      "timestamp": "2025-04-21T18:14:29.101Z",
+      "id": "rzfpctgw4"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Organization Chart - OptiForce HR page",
+      "timestamp": "2025-04-21T18:14:32.401Z",
+      "id": "9r6c1375v"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:14:37.077Z",
+      "id": "57sq1fhq4"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:14:52.176Z",
+      "id": "0soq7mueq"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:14:56.285Z",
+      "id": "dwm17l04e"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:17:33.585Z",
+      "id": "x79zyel4d"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:17:35.755Z",
+      "id": "v9ct63ezl"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:18:38.056Z",
+      "id": "rfg9z448y"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:20:05.651Z",
+      "id": "q1b2f0tdm"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:20:47.782Z",
+      "id": "fipigg8qb"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:23:50.648Z",
+      "id": "09eo2jj24"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:26:35.586Z",
+      "id": "mz2t1ur09"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-21T18:27:26.380Z",
+      "id": "a1py3qa6v"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Training Management - OptiForce HR page",
+      "timestamp": "2025-04-21T18:27:42.947Z",
+      "id": "pjzhmsk0h"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Organization Chart - OptiForce HR page",
+      "timestamp": "2025-04-21T18:27:47.063Z",
+      "id": "zmhbg8qbu"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Leave Management - OptiForce HR page",
+      "timestamp": "2025-04-21T18:27:50.656Z",
+      "id": "cu59qx8w5"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:27:54.350Z",
+      "id": "3dx2k6aao"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:28:00.343Z",
+      "id": "obvy3g2tm"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Payroll Management - OptiForce HR page",
+      "timestamp": "2025-04-21T18:28:25.161Z",
+      "id": "izlio8phv"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:28:41.579Z",
+      "id": "yajx5gue1"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:28:55.355Z",
+      "id": "eorbq2y4i"
+    },
+    {
+      "type": "department",
+      "action": "add",
+      "details": "Added department: rambo",
+      "timestamp": "2025-04-21T18:29:40.901Z",
+      "id": "0kn7pilck"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:30:12.233Z",
+      "id": "7vwuspqrb"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Training Management - OptiForce HR page",
+      "timestamp": "2025-04-21T18:31:32.366Z",
+      "id": "zepofv6ew"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:33:32.983Z",
+      "id": "eqh0jgll3"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:34:12.526Z",
+      "id": "nue4zdo9c"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-21T18:41:20.857Z",
+      "id": "9zp6hk7j2"
+    },
+    {
+      "type": "employee",
+      "action": "add",
+      "details": "Added new employee Abdul Rahman Gasim (Operation Executive)",
+      "employeeName": "Abdul Rahman Gasim",
+      "designation": "Operation Executive",
+      "department": "Admin",
+      "timestamp": "2025-04-21T18:43:37.608Z",
+      "id": "xl2rxxmo4"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T01:57:16.200Z",
+      "id": "yangj3pbo"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T02:05:12.371Z",
+      "id": "78grisufz"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T02:11:06.975Z",
+      "id": "bhrsv3cvk"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T02:26:42.504Z",
+      "id": "n637pwfcj"
+    },
+    {
+      "type": "worksite",
+      "action": "add",
+      "details": "Added worksite: male office",
+      "timestamp": "2025-04-22T02:27:23.971Z",
+      "id": "zj5wgb09p"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T02:58:40.437Z",
+      "id": "cuudhm454"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T02:59:54.883Z",
+      "id": "8afe5565s"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:01:03.660Z",
+      "id": "o7ooj0nc6"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:02:04.334Z",
+      "id": "10kida7m9"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:03:12.045Z",
+      "id": "kz1g41jro"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:04:21.464Z",
+      "id": "uk7zpr3wo"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:05:48.154Z",
+      "id": "0zdcbm9nt"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:07:58.626Z",
+      "id": "pkbijgvg1"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:10:28.875Z",
+      "id": "s91pcdfwy"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:11:32.205Z",
+      "id": "ycwvc6ipx"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:11:47.719Z",
+      "id": "dl623pmlk"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:13:05.559Z",
+      "id": "bwikbnmnk"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:13:32.171Z",
+      "id": "ruw457x21"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:15:04.464Z",
+      "id": "dg8dz6o9d"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:15:49.229Z",
+      "id": "9w9gj8gg1"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:16:18.161Z",
+      "id": "zdbo14372"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:17:27.812Z",
+      "id": "smk73c6n7"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:17:37.699Z",
+      "id": "w0l8xtari"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:18:53.863Z",
+      "id": "a5wbpvj4c"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:20:03.939Z",
+      "id": "gru2eyfg2"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:21:22.742Z",
+      "id": "bp23yhcqq"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:23:24.227Z",
+      "id": "ujh5c0eob"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:25:24.615Z",
+      "id": "5rbuziqk0"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:27:27.848Z",
+      "id": "b9sxwgjt6"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:28:57.175Z",
+      "id": "m5kcehzdw"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:29:22.169Z",
+      "id": "9br2w2rp6"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:29:37.278Z",
+      "id": "lvaogtlgr"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:30:27.963Z",
+      "id": "7nz7sioj7"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:31:46.321Z",
+      "id": "lf8vztra7"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:32:58.392Z",
+      "id": "u5xatkm1t"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:34:12.574Z",
+      "id": "51s805a0a"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:35:10.468Z",
+      "id": "2pvl1sryq"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:35:58.040Z",
+      "id": "0b0cxlb0v"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:37:41.903Z",
+      "id": "0tb7glwsq"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:37:47.697Z",
+      "id": "h23axmwiy"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:38:38.808Z",
+      "id": "fzboz8nrq"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:38:58.129Z",
+      "id": "tqoblwmk0"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:40:00.091Z",
+      "id": "prn3dkm8x"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:41:04.123Z",
+      "id": "a79x3bc0n"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:44:25.635Z",
+      "id": "265rfq6f1"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:46:03.103Z",
+      "id": "5zd9amwos"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:46:50.466Z",
+      "id": "5ihtywmze"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:46:53.307Z",
+      "id": "bg4lwyala"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:48:17.151Z",
+      "id": "zydnc6oen"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:50:22.804Z",
+      "id": "k4d2g5485"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:51:10.840Z",
+      "id": "ej7csugai"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:57:14.992Z",
+      "id": "1g4y1cf3v"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Optiforce HR - Dashboard page",
+      "timestamp": "2025-04-22T03:57:49.228Z",
+      "id": "m0vknclkk"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:58:05.733Z",
+      "id": "4p2dgzqzi"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T03:59:32.210Z",
+      "id": "s2q44k0jz"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:02:56.308Z",
+      "id": "z2atpw5d2"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:03:34.513Z",
+      "id": "41y9soiq2"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:07:55.490Z",
+      "id": "nw8dte2d0"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:09:24.583Z",
+      "id": "6fek81w8t"
+    },
+    {
+      "type": "employee",
+      "action": "edit",
+      "details": "Updated employee Ahmed Sinaz (Managing Director)",
+      "employeeId": "FEM001",
+      "employeeName": "Ahmed Sinaz",
+      "designation": "Managing Director",
+      "department": "Admin",
+      "timestamp": "2025-04-22T04:09:32.237Z",
+      "id": "idwh4jxle"
+    },
+    {
+      "type": "employee",
+      "action": "edit",
+      "details": "Updated employee Ahmed Sinaz (Managing Director)",
+      "employeeId": "FEM001",
+      "employeeName": "Ahmed Sinaz",
+      "designation": "Managing Director",
+      "department": "Admin",
+      "timestamp": "2025-04-22T04:09:49.389Z",
+      "id": "h55nvtztf"
+    },
+    {
+      "type": "employee",
+      "action": "edit",
+      "details": "Updated employee Ahmed Sinaz (Managing Director)",
+      "employeeId": "FEM001",
+      "employeeName": "Ahmed Sinaz",
+      "designation": "Managing Director",
+      "department": "Admin",
+      "timestamp": "2025-04-22T04:10:01.171Z",
+      "id": "718gbfvaq"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:10:53.467Z",
+      "id": "t6t4i160f"
+    },
+    {
+      "type": "employee",
+      "action": "edit",
+      "details": "Updated employee Ahmed Sinaz (Managing Director)",
+      "employeeId": "FEM001",
+      "employeeName": "Ahmed Sinaz",
+      "designation": "Managing Director",
+      "department": "Admin",
+      "timestamp": "2025-04-22T04:11:07.368Z",
+      "id": "9e8zs1c1e"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:11:59.275Z",
+      "id": "l97dxxvan"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:13:03.525Z",
+      "id": "cdxgc6h7q"
+    },
+    {
+      "type": "employee",
+      "action": "add",
+      "details": "Added new employee Abdul Rahman Gasim (Second Engineer)",
+      "employeeName": "Abdul Rahman Gasim",
+      "designation": "Second Engineer",
+      "department": "Operations",
+      "timestamp": "2025-04-22T04:13:32.060Z",
+      "id": "vq1j6xi8u"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:14:14.496Z",
+      "id": "kkchf4f62"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:15:07.393Z",
+      "id": "vvqcl33ot"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Optiforce HR - Dashboard page",
+      "timestamp": "2025-04-22T04:15:29.310Z",
+      "id": "86smroq81"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:15:34.081Z",
+      "id": "imxwt1non"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Optiforce HR - Dashboard page",
+      "timestamp": "2025-04-22T04:15:47.644Z",
+      "id": "t3x123scx"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:15:55.022Z",
+      "id": "dd1jyyqg0"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:17:22.280Z",
+      "id": "fgsnvqpn0"
+    },
+    {
+      "type": "department",
+      "action": "add",
+      "details": "Added department: badhige",
+      "timestamp": "2025-04-22T04:18:15.361Z",
+      "id": "o5cd0ulqi"
+    },
+    {
+      "type": "worksite",
+      "action": "add",
+      "details": "Added worksite: habor",
+      "timestamp": "2025-04-22T04:18:36.951Z",
+      "id": "pvnyxzbd0"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Optiforce HR - Dashboard page",
+      "timestamp": "2025-04-22T04:18:41.536Z",
+      "id": "4xr78jye5"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Optiforce HR - Dashboard page",
+      "timestamp": "2025-04-22T04:19:47.225Z",
+      "id": "jvb101cx5"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:19:50.535Z",
+      "id": "icq0tys7w"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:21:00.658Z",
+      "id": "voo24t8hk"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:21:15.664Z",
+      "id": "a9nfd1qll"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:21:40.330Z",
+      "id": "5vbulv4lf"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Leave Management - OptiForce HR page",
+      "timestamp": "2025-04-22T04:22:09.830Z",
+      "id": "184yeciw6"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:22:26.422Z",
+      "id": "p3gdx617x"
+    },
+    {
+      "type": "timesheet",
+      "action": "created",
+      "employeeId": "undefined",
+      "employeeName": "Ahmed Sinaz",
+      "week": "2025-W17",
+      "summary": {
+        "workingDays": 1,
+        "totalWorkingHours": 10.05,
+        "totalOvertime": 2.05
+      },
+      "timestamp": "2025-04-22T04:22:55.369Z",
+      "id": "1ozhor3rh"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:26:29.790Z",
+      "id": "x0vagx40h"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:27:14.294Z",
+      "id": "dbiqo837v"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:29:04.311Z",
+      "id": "xpgbesgev"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:29:26.441Z",
+      "id": "y441355yc"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:32:16.038Z",
+      "id": "4q2gsypvv"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:33:10.695Z",
+      "id": "h8597tqnh"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:33:58.462Z",
+      "id": "oz5z4b26v"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:35:07.410Z",
+      "id": "nyh4zctqd"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:36:01.535Z",
+      "id": "3k6qz6kok"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T04:37:22.805Z",
+      "id": "d94zzlvvk"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:37:38.873Z",
+      "id": "xv5rqqy9p"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:40:02.401Z",
+      "id": "0zlkywjgb"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:40:41.204Z",
+      "id": "aibqk30ei"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:44:08.260Z",
+      "id": "ccrcc6dmf"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:45:04.096Z",
+      "id": "o56kuo45a"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:45:24.838Z",
+      "id": "c62g9q1p8"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:45:42.425Z",
+      "id": "67ylqeyk2"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:45:44.995Z",
+      "id": "3ilq4ymve"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:47:07.742Z",
+      "id": "ac4wgjflw"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:47:20.995Z",
+      "id": "ku1yj27mz"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:48:07.153Z",
+      "id": "sclvp6pcl"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:49:32.481Z",
+      "id": "14n6ly82b"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:50:51.482Z",
+      "id": "2gabewumk"
+    },
+    {
+      "type": "timesheet",
+      "action": "created",
+      "employeeId": "undefined",
+      "employeeName": "Mohamed Jamer Uddin",
+      "week": "2025-W17",
+      "summary": {
+        "workingDays": 1,
+        "totalWorkingHours": 0.02,
+        "totalOvertime": 0
+      },
+      "timestamp": "2025-04-22T04:51:13.007Z",
+      "id": "6xf00e1vd"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:52:31.282Z",
+      "id": "s1ux5fchz"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:54:03.270Z",
+      "id": "nvfpp8yhx"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:54:31.438Z",
+      "id": "u2i4uiy5o"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:56:15.488Z",
+      "id": "z088223m5"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:58:33.732Z",
+      "id": "x04n2so54"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T04:58:55.072Z",
+      "id": "5w70op03t"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:05:35.760Z",
+      "id": "sqqsay4vr"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:06:54.347Z",
+      "id": "fy3houhqf"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:10:01.291Z",
+      "id": "s57bfoay7"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:10:41.254Z",
+      "id": "gf23zd40o"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:11:54.254Z",
+      "id": "7n1b3faxe"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:12:17.583Z",
+      "id": "jdq806dvf"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:19:15.961Z",
+      "id": "tv3m6t3tv"
+    },
+    {
+      "type": "timesheet",
+      "action": "created",
+      "employeeId": "undefined",
+      "employeeName": "Ibrahim Jaleel",
+      "week": "2025-W17",
+      "summary": {
+        "workingDays": 0,
+        "totalWorkingHours": 0,
+        "totalOvertime": 0
+      },
+      "timestamp": "2025-04-22T05:19:24.311Z",
+      "id": "jn189bx5j"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:23:37.850Z",
+      "id": "tv74k15a5"
+    },
+    {
+      "type": "timesheet",
+      "action": "created",
+      "employeeId": "undefined",
+      "employeeName": "Aishath Fazaa Fazeel",
+      "week": "2025-W19",
+      "summary": {
+        "workingDays": 0,
+        "totalWorkingHours": 0,
+        "totalOvertime": 0
+      },
+      "timestamp": "2025-04-22T05:24:09.684Z",
+      "id": "02iqrc0my"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:24:33.079Z",
+      "id": "k107dv6qt"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:25:03.066Z",
+      "id": "uyv6hudx8"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:25:43.454Z",
+      "id": "cxysxern2"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:27:15.930Z",
+      "id": "4ppq03oxh"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:27:44.544Z",
+      "id": "a7rz8cixe"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:28:38.686Z",
+      "id": "egudqt43w"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T05:29:27.100Z",
+      "id": "nhnktpdil"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T05:29:29.379Z",
+      "id": "09sfuz0u4"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:30:02.546Z",
+      "id": "oq2iuix2d"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:30:06.290Z",
+      "id": "9qm5hky4z"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:35:41.422Z",
+      "id": "c3pqfzgsz"
+    },
+    {
+      "type": "timesheet",
+      "action": "created",
+      "employeeId": "undefined",
+      "employeeName": "Mohamed Jamer Uddin",
+      "week": "2025-W17",
+      "summary": {
+        "workingDays": 0,
+        "totalWorkingHours": 0,
+        "totalOvertime": 0
+      },
+      "timestamp": "2025-04-22T05:35:53.634Z",
+      "id": "e6dpqcank"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:42:14.599Z",
+      "id": "zk35i1sdc"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:42:34.467Z",
+      "id": "fhogq2gqu"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:44:17.975Z",
+      "id": "bt316dlkq"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:46:43.168Z",
+      "id": "9opoy84bu"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:48:24.641Z",
+      "id": "vrbiha7ms"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:51:57.898Z",
+      "id": "nxyy6j38i"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:55:42.289Z",
+      "id": "8rdp4w26s"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T05:59:05.330Z",
+      "id": "dkfnnynia"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:06:40.378Z",
+      "id": "q4sff7jvu"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:19:34.713Z",
+      "id": "2boff027p"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T06:20:02.221Z",
+      "id": "lxtrcqesr"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T06:20:04.624Z",
+      "id": "scxrl63st"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:20:07.092Z",
+      "id": "jxg3ojrbo"
+    },
+    {
+      "type": "timesheet",
+      "action": "created",
+      "employeeId": "undefined",
+      "employeeName": "Ahmed Sinaz",
+      "week": "2025-W17",
+      "summary": {
+        "workingDays": 4,
+        "totalWorkingHours": 34.019999999999996,
+        "totalOvertime": 15
+      },
+      "timestamp": "2025-04-22T06:23:30.737Z",
+      "id": "yz0ohofk7"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:25:06.801Z",
+      "id": "8oajcdo4b"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:28:29.455Z",
+      "id": "yqp9miq5f"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:36:44.815Z",
+      "id": "moraxdzo6"
+    },
+    {
+      "type": "timesheet",
+      "action": "created",
+      "employeeId": "undefined",
+      "employeeName": "Ibrahim Jaleel",
+      "week": "2025-W17",
+      "summary": {
+        "workingDays": 2,
+        "totalWorkingHours": 3,
+        "totalOvertime": 0
+      },
+      "timestamp": "2025-04-22T06:37:46.295Z",
+      "id": "q8h4ivafa"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:39:46.705Z",
+      "id": "fsogc6xdh"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:42:00.262Z",
+      "id": "6xldmuvo2"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:42:15.109Z",
+      "id": "w5y8c7g7i"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T06:42:16.351Z",
+      "id": "vkxsqjsje"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:42:19.189Z",
+      "id": "yghd8iw6e"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:43:00.726Z",
+      "id": "8ijffg72d"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:43:35.507Z",
+      "id": "e3w51cj99"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:43:53.944Z",
+      "id": "lr3faytst"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:45:11.067Z",
+      "id": "odgsolexu"
+    },
+    {
+      "type": "timesheet",
+      "action": "created",
+      "employeeId": "undefined",
+      "employeeName": "Ahmed Sinaz",
+      "week": "2025-W17",
+      "summary": {
+        "workingDays": 0,
+        "totalWorkingHours": 0,
+        "totalOvertime": 0
+      },
+      "timestamp": "2025-04-22T06:46:51.205Z",
+      "id": "2sbtvqcqc"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:48:01.469Z",
+      "id": "yf3up1x4l"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:48:38.489Z",
+      "id": "yq7wnlh00"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:49:19.167Z",
+      "id": "r80jihwp7"
+    },
+    {
+      "type": "timesheet",
+      "action": "created",
+      "employeeId": "FEM001",
+      "employeeName": "Ahmed Sinaz",
+      "week": "2025-W17",
+      "summary": {
+        "workingDays": 0,
+        "totalWorkingHours": 0,
+        "totalOvertime": 0
+      },
+      "timestamp": "2025-04-22T06:49:31.109Z",
+      "id": "4bjs7c7tp"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:51:50.278Z",
+      "id": "y7jvc8n1o"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:52:02.936Z",
+      "id": "n7qhxzlkk"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:55:23.704Z",
+      "id": "9yhploiff"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:55:38.766Z",
+      "id": "3dr0zwdlh"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:55:39.436Z",
+      "id": "ykt7pkavb"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:55:39.884Z",
+      "id": "mckxkhymh"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:55:40.174Z",
+      "id": "udljhetqw"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:55:40.404Z",
+      "id": "r3izglgyn"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:55:40.601Z",
+      "id": "k7h4afcop"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T06:58:00.828Z",
+      "id": "f0f7b7qfz"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T07:02:43.763Z",
+      "id": "s13bc0zgg"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Employees - OptiForce HR page",
+      "timestamp": "2025-04-22T07:02:45.231Z",
+      "id": "3m4d62d1w"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T07:02:46.892Z",
+      "id": "3cdh40roe"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T07:10:00.625Z",
+      "id": "a18l0g3lt"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T07:54:50.967Z",
+      "id": "t7jb7kkkg"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T08:27:15.717Z",
+      "id": "qdg6pwg1y"
+    },
+    {
+      "type": "page",
+      "action": "view",
+      "details": "Viewed Time & Attendance - OptiForce HR page",
+      "timestamp": "2025-04-22T08:27:27.850Z",
+      "id": "nqlbtuhy2"
+    }
+  ]
+}

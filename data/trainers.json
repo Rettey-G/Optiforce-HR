@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "680622c1d80c8b084c7bd8c4",
+    "name": "Rettey",
+    "email": "retey@hotmail.com",
+    "phone": "2222222",
+    "expertise": [],
+    "status": "active",
+    "createdAt": "2025-04-21T10:49:37.699+00:00",
+    "updatedAt": "2025-04-21T10:49:37.699+00:00",
+    "__v": 0
+  },
+  {
+    "name": "JOBA",
+    "email": "retey.ay@hotmail.com",
+    "phone": "9795529",
+    "expertise": [
+      "soft-skills"
+    ],
+    "status": "active"
+  }
+]

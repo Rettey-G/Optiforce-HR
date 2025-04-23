@@ -1,0 +1,338 @@
+/* ORGANIZATION CHART STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --level-1: #0077cc;
+  --level-2: #4a98d3;
+  --level-3: #7bb7e0;
+  --level-4: #a7d1ec;
+  --black: #333;
+  --white: #fff;
+  --shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.org-chart-container {
+  max-width: 1200px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.org-chart ol {
+  list-style: none;
+}
+
+.rectangle {
+  position: relative;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-height: 120px;
+  width: 100%;
+}
+
+.rectangle:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* LEVEL-1 STYLES (CEO/Top Level)
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-1 {
+  width: 50%;
+  margin: 0 auto 40px;
+  background: var(--level-1);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.level-1::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}
+
+/* LEVEL-2 STYLES (Directors)
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-2-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 30px;
+}
+
+.level-2-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 25%;
+  width: 50%;
+  height: 2px;
+  background: var(--black);
+}
+
+.level-2-wrapper li {
+  position: relative;
+}
+
+.level-2-wrapper > li::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}
+
+.level-2 {
+  width: 80%;
+  margin: 0 auto 40px;
+  background: var(--level-2);
+  color: var(--white);
+  font-weight: 500;
+}
+
+.level-2::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}
+
+/* LEVEL-3 STYLES (Managers)
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-3-wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.level-3-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: calc(25% - 5px);
+  width: calc(50% + 10px);
+  height: 2px;
+  background: var(--black);
+}
+
+.level-3-wrapper > li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 2px;
+  height: 20px;
+  background: var(--black);
+}
+
+.level-3 {
+  margin-bottom: 20px;
+  background: var(--level-3);
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* LEVEL-4 STYLES (Employees)
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.level-4-wrapper {
+  position: relative;
+  width: 80%;
+  margin-left: auto;
+}
+
+.level-4-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 2px;
+  height: calc(100% + 20px);
+  background: var(--black);
+}
+
+.level-4-wrapper li + li {
+  margin-top: 20px;
+}
+
+.level-4 {
+  font-weight: normal;
+  background: var(--level-4);
+  color: var(--black);
+}
+
+.level-4::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-100%, -50%);
+  width: 20px;
+  height: 2px;
+  background: var(--black);
+}
+
+/* Employee Card Styles */
+.employee-card {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+.employee-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.employee-info {
+  flex: 1;
+}
+
+.employee-name {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 3px;
+}
+
+.employee-title {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-bottom: 5px;
+}
+
+.employee-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.employee-worksite, .employee-joined, .employee-department, .employee-id, .employee-salary, .employee-status, .employee-email {
+  display: block;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Collapsed State Styles */
+.level-3-wrapper.collapsed,
+.level-4-wrapper.collapsed {
+  display: none;
+}
+
+/* Clickable Indicators */
+.level-2::after,
+.level-3::after {
+  content: '+';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.level-2:hover::after,
+.level-3:hover::after {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.employee-title {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.employee-details {
+  font-size: 0.75rem;
+  margin-top: 5px;
+}
+
+.employee-detail {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.employee-detail i {
+  width: 14px;
+  margin-right: 5px;
+}
+
+/* RESPONSIVE STYLES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (max-width: 900px) {
+  .rectangle {
+    padding: 20px 10px;
+  }
+
+  .level-1,
+  .level-2 {
+    width: 100%;
+  }
+
+  .level-1 {
+    margin-bottom: 20px;
+  }
+
+  .level-1::before,
+  .level-2-wrapper > li::before {
+    display: none;
+  }
+  
+  .level-2-wrapper {
+    display: block;
+    width: 90%;
+    margin-left: 10%;
+  }
+
+  .level-2-wrapper::before {
+    left: -20px;
+    width: 2px;
+    height: calc(100% + 40px);
+  }
+
+  .level-2-wrapper > li:not(:first-child) {
+    margin-top: 50px;
+  }
+
+  .level-3-wrapper {
+    display: block;
+  }
+
+  .employee-photo {
+    width: 40px;
+    height: 40px;
+  }
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time & Attendance - OptiForce HR</title>
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/employees.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/header-footer.css">
+    <link rel="stylesheet" href="/css/time_attendance.css">
+    <link rel="stylesheet" href="/css/attendance.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    <main class="container">
+        <section class="attendance-header">
+            <h2>Time & Attendance</h2>
+            <div class="attendance-actions">
+                <div class="date-selector">
+                    <label for="week-selector">Select Week:</label>
+                    <input type="week" id="week-selector">
+                    <button id="load-week-btn" class="btn primary-btn"><i class="fas fa-sync"></i> Load</button>
+                </div>
+                <div class="employee-selector">
+                    <label for="employee-select">Select Employee:</label>
+                    <select id="employee-select">
+                        <option value="">All Employees</option>
+                        <!-- Employee options will be loaded dynamically -->
+                    </select>
+                </div>
+                <button id="viewLeaveBalancesBtn" class="attendance-btn"><i class="fas fa-calendar-check"></i> View Leave Balances</button>
+                <button id="clockInBtn" class="attendance-btn"><i class="fas fa-sign-in-alt"></i> Clock In</button>
+                <button id="clockOutBtn" class="attendance-btn"><i class="fas fa-sign-out-alt"></i> Clock Out</button>
+            </div>
+        </section>
+        <section class="timesheet-container">
+            <div class="timesheet-header">
+                <h3>Weekly Timesheet</h3>
+                <div class="timesheet-controls">
+                    <button id="save-timesheet-btn" class="btn primary-btn"><i class="fas fa-save"></i> Save Timesheet</button>
+                    <button id="print-timesheet-btn" class="btn secondary-btn"><i class="fas fa-print"></i> Print</button>
+                </div>
+            </div>
+            <div id="timesheet-wrapper"></div>
+        </section>
+        <section class="attendance-summary">
+            <h3>Attendance Summary</h3>
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <i class="fas fa-user-clock"></i>
+                    <div class="summary-info">
+                        <h4>Present</h4>
+                        <p id="present-count">0</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-user-times"></i>
+                    <div class="summary-info">
+                        <h4>Absent</h4>
+                        <p id="absent-count">0</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-business-time"></i>
+                    <div class="summary-info">
+                        <h4>Overtime</h4>
+                        <p id="overtime-hours">0 hrs</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-hourglass-half"></i>
+                    <div class="summary-info">
+                        <h4>Total Working</h4>
+                        <p id="working-hours-count">0 hrs</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <i class="fas fa-bed"></i>
+                    <div class="summary-info">
+                        <h4>Sick Leave</h4>
+                        <p id="sick-count">0</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Leave Balances Section -->
+        <section class="leave-balances-container" id="leaveBalancesSection" style="display: none;">
+            <div class="section-header">
+                <h3><i class="fas fa-calendar-alt"></i> Leave Balances</h3>
+                <div class="employee-info" id="leaveBalancesEmployeeInfo"></div>
+            </div>
+            <div class="leave-balances-table-container">
+                <table class="leave-balances-table" id="leaveBalancesTable">
+                    <thead>
+                        <tr>
+                            <th>Leave Type</th>
+                            <th>Entitlement</th>
+                            <th>Used</th>
+                            <th>Remaining</th>
+                            <th>Forfeited</th>
+                            <th>Dates Taken</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaveBalancesTableBody">
+                        <!-- Leave balances will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Public Holidays Section -->
+        <section class="public-holidays-container" id="publicHolidaysSection" style="display: none;">
+            <div class="section-header">
+                <h3><i class="fas fa-star"></i> Public Holidays (2025)</h3>
+            </div>
+            <div class="public-holidays-table-container">
+                <table class="public-holidays-table" id="publicHolidaysTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Day</th>
+                            <th>Holiday</th>
+                        </tr>
+                    </thead>
+                    <tbody id="publicHolidaysTableBody">
+                        <!-- Public holidays will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <div class="activity-container" id="recentActivities"></div>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="/js/layout.js"></script>
+    <script type="module" src="/js/time_attendance.js"></script>
+</body>
+</html>

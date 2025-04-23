@@ -1,0 +1,203 @@
+/* Basic Navigation Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 10px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Logo */
+.logo img {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+/* Menu Button */
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    z-index: 1100;
+}
+
+.menu-button .hamburger {
+    display: block;
+    width: 28px;
+    height: 22px;
+    position: relative;
+}
+
+.menu-button .hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #222;
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.menu-button .hamburger span:nth-child(1) {
+    top: 0;
+}
+.menu-button .hamburger span:nth-child(2) {
+    top: 9px;
+}
+.menu-button .hamburger span:nth-child(3) {
+    top: 18px;
+}
+
+.menu-button.open .hamburger span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 9px;
+}
+.menu-button.open .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+.menu-button.open .hamburger span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 9px;
+}
+
+/* Navigation Links */
+.links {
+    display: flex;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.links a {
+    color: black;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.links a:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.links .logout {
+    background: #ff4444;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+}
+
+.links .logout:hover {
+    background: #ff0000;
+    transform: translateY(-2px);
+}
+
+/* Admin only link */
+.admin-only {
+    display: none; /* Hidden by default */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .menu-button {
+        display: block;
+    }
+
+    .links {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
+    }
+
+    .links.open {
+        display: flex !important;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    .links a {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+        font-size: 16px;
+    }
+
+    .links a:last-child {
+        border-bottom: none;
+    }
+
+    .nav-content {
+        padding: 0 15px;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .navbar {
+        background: #1a1a1a;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu-button .hamburger span {
+        background: #fff;
+    }
+
+    .links {
+        background: #1a1a1a;
+    }
+
+    .links a {
+        color: white;
+    }
+
+    .links a:hover {
+        background: #333;
+    }
+
+    .links a {
+        border-bottom-color: #333;
+    }
+}

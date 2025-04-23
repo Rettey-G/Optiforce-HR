@@ -1,0 +1,40 @@
+[
+  {
+    "_id": "68062b722df2ce495d5213bf",
+    "name": "complain handle",
+    "type": "technical",
+    "startDate": "2025-04-22T00:00:00.000+00:00",
+    "endDate": "2025-04-22T00:00:00.000+00:00",
+    "trainer": "680622c1d80c8b084c7bd8c4",
+    "maxParticipants": 11,
+    "description": "23344",
+    "status": "upcoming",
+    "participants": [],
+    "createdAt": "2025-04-21T11:26:42.795+00:00",
+    "schedule": [],
+    "updatedAt": "2025-04-21T11:26:42.798+00:00",
+    "__v": 0
+  },
+  {
+    "name": "RRRAANN",
+    "type": "technical",
+    "startDate": "2025-05-02",
+    "endDate": "2025-05-06",
+    "trainer": "680622c1d80c8b084c7bd8c4",
+    "maxParticipants": 22,
+    "description": "34EER",
+    "status": "upcoming",
+    "participants": []
+  },
+  {
+    "name": "3455",
+    "type": "compliance",
+    "startDate": "2025-05-09",
+    "endDate": "2025-05-10",
+    "trainer": "undefined",
+    "maxParticipants": 10,
+    "description": "234",
+    "status": "upcoming",
+    "participants": []
+  }
+]

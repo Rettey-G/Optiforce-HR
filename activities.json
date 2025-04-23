@@ -1,0 +1,18 @@
+{
+  "recent": [
+    {
+      "action": "processed",
+      "type": "payroll",
+      "details": "Processed payroll for 2025-04",
+      "timestamp": "2025-04-23T08:42:58.239Z",
+      "by": "Admin"
+    },
+    {
+      "action": "processed",
+      "type": "payroll",
+      "details": "Processed payroll for 2025-04",
+      "timestamp": "2025-04-23T08:42:58.233Z",
+      "by": "Admin"
+    }
+  ]
+}
