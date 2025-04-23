@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isLoggedIn === 'true') {
         // Redirect based on user role
         if (userRole === 'admin') {
-            window.location.href = '/admin-dashboard.html';
+            window.location.href = 'admin-dashboard.html';
         } else {
-            window.location.href = '/dashboard.html';
+            window.location.href = 'dashboard.html';
         }
         return;
     }
@@ -65,9 +65,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log('Login successful via API, redirecting to dashboard');
                 // Redirect based on user role
                 if (userData.role === 'admin') {
-                    window.location.href = '/admin-dashboard.html';
+                    window.location.href = 'admin-dashboard.html';
                 } else {
-                    window.location.href = '/dashboard.html';
+                    window.location.href = 'dashboard.html';
                 }
             } 
             // Otherwise use mock login for demo purposes
@@ -106,9 +106,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     console.log('Login successful via mock auth, redirecting to dashboard');
                     // Redirect based on user role
                     if (mockRole === 'admin') {
-                        window.location.href = '/admin-dashboard.html';
+                        window.location.href = 'admin-dashboard.html';
                     } else {
-                        window.location.href = '/dashboard.html';
+                        window.location.href = 'dashboard.html';
                     }
                 } else {
                     // Show error message
