@@ -90,8 +90,8 @@ function initNavigation() {
 
 // Load dashboard data
 function loadDashboardData() {
-    // Load statistics
-    fetch('/api/dashboard/stats')
+    // Load statistics using the fetchApi function from api-mock.js
+    fetchApi('/api/dashboard/stats')
         .then(response => response.json())
         .then(data => {
             document.getElementById('total-employees').textContent = data.totalEmployees || 0;
@@ -105,42 +105,83 @@ function loadDashboardData() {
         .catch(error => {
             console.error('Error loading dashboard stats:', error);
             showToast('Error loading dashboard statistics', 'error');
+            
+            // Set fallback values
+            document.getElementById('total-employees').textContent = '15';
+            document.getElementById('total-departments').textContent = '5';
+            document.getElementById('total-worksites').textContent = '4';
+            document.getElementById('total-users').textContent = '3';
+            
+            // Create fallback chart
+            createDepartmentChart([
+                { name: 'Executive', count: 1 },
+                { name: 'Operations', count: 6 },
+                { name: 'Finance', count: 6 },
+                { name: 'HR', count: 1 },
+                { name: 'IT', count: 1 }
+            ]);
         });
     
-    // Load recent activities
-    fetch('/api/dashboard/recent-activities')
+    // Load recent activities using the fetchApi function from api-mock.js
+    fetchApi('/api/dashboard/recent-activities')
         .then(response => response.json())
-        .then(data => {
-            const activitiesTable = document.getElementById('recent-activities');
-            activitiesTable.innerHTML = '';
+        .then(activities => {
+            const activitiesList = document.getElementById('recent-activities-list');
+            if (!activitiesList) return;
             
-            const activities = data.recent || [];
-            
-            if (activities.length === 0) {
-                activitiesTable.innerHTML = '<tr><td colspan="4" class="text-center">No recent activities</td></tr>';
-                return;
-            }
+            activitiesList.innerHTML = '';
             
             activities.slice(0, 5).forEach(activity => {
-                const row = document.createElement('tr');
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex justify-content-between align-items-center';
                 
-                // Format timestamp
-                const date = new Date(activity.timestamp);
-                const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+                const badgeClass = getActionBadgeClass(activity.action);
                 
-                row.innerHTML = `
-                    <td><span class="badge ${getActionBadgeClass(activity.action)}">${activity.action}</span></td>
-                    <td>${activity['Employee Name'] || 'N/A'}</td>
-                    <td>${formattedDate}</td>
-                    <td>${activity.by || 'System'}</td>
+                li.innerHTML = `
+                    <div>
+                        <span class="badge ${badgeClass} me-2">${activity.action}</span>
+                        <strong>${activity.username}</strong> ${activity.description}
+                    </div>
+                    <small class="text-muted">${new Date(activity.timestamp).toLocaleString()}</small>
                 `;
                 
-                activitiesTable.appendChild(row);
+                activitiesList.appendChild(li);
             });
         })
         .catch(error => {
             console.error('Error loading recent activities:', error);
             showToast('Error loading recent activities', 'error');
+            
+            // Create fallback activities
+            const activitiesList = document.getElementById('recent-activities-list');
+            if (!activitiesList) return;
+            
+            activitiesList.innerHTML = '';
+            
+            const mockActivities = [
+                { id: 1, username: 'admin', action: 'CREATE', description: 'created a new employee record', timestamp: new Date(2025, 3, 23, 15, 30, 0).toISOString() },
+                { id: 2, username: 'admin', action: 'UPDATE', description: 'updated department structure', timestamp: new Date(2025, 3, 23, 14, 45, 0).toISOString() },
+                { id: 3, username: 'user1', action: 'LOGIN', description: 'logged into the system', timestamp: new Date(2025, 3, 23, 14, 30, 0).toISOString() },
+                { id: 4, username: 'admin', action: 'DELETE', description: 'removed an inactive user account', timestamp: new Date(2025, 3, 23, 13, 15, 0).toISOString() },
+                { id: 5, username: 'user2', action: 'VIEW', description: 'viewed employee records', timestamp: new Date(2025, 3, 23, 12, 0, 0).toISOString() }
+            ];
+            
+            mockActivities.forEach(activity => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                
+                const badgeClass = getActionBadgeClass(activity.action);
+                
+                li.innerHTML = `
+                    <div>
+                        <span class="badge ${badgeClass} me-2">${activity.action}</span>
+                        <strong>${activity.username}</strong> ${activity.description}
+                    </div>
+                    <small class="text-muted">${new Date(activity.timestamp).toLocaleString()}</small>
+                `;
+                
+                activitiesList.appendChild(li);
+            });
         });
 }
 
@@ -212,22 +253,7 @@ function getActionBadgeClass(action) {
 
 // Load users for user management
 function loadUsers() {
-    fetch('/api/users')
-        .then(response => {
-            if (!response.ok) {
-                // If API doesn't exist, use mock data for demo
-                return Promise.resolve({
-                    json: () => Promise.resolve([
-                        { id: 1, username: 'admin', role: 'admin' },
-                        { id: 2, username: 'user1', role: 'user' },
-                        { id: 3, username: 'user2', role: 'user' },
-                        { id: 4, username: 'user3', role: 'user' },
-                        { id: 5, username: 'user4', role: 'user' }
-                    ])
-                });
-            }
-            return response;
-        })
+    fetchApi('/api/users')
         .then(response => response.json())
         .then(users => {
             const usersTable = document.getElementById('users-table');
@@ -339,7 +365,7 @@ function initUserActionButtons() {
 
 // Load employees for employee management
 function loadEmployees() {
-    fetch('/api/employees')
+    fetchApi('/api/employees')
         .then(response => response.json())
         .then(employees => {
             const employeesTable = document.getElementById('employees-table');
@@ -378,22 +404,7 @@ function loadEmployees() {
 
 // Load departments
 function loadDepartments() {
-    fetch('/api/departments')
-        .then(response => {
-            if (!response.ok) {
-                // If API doesn't exist, use mock data for demo
-                return Promise.resolve({
-                    json: () => Promise.resolve([
-                        { id: 1, name: 'Admin', description: 'Administration department' },
-                        { id: 2, name: 'HR', description: 'Human Resources department' },
-                        { id: 3, name: 'IT', description: 'Information Technology department' },
-                        { id: 4, name: 'Finance', description: 'Finance and Accounting department' },
-                        { id: 5, name: 'Operations', description: 'Operations department' }
-                    ])
-                });
-            }
-            return response;
-        })
+    fetchApi('/api/departments')
         .then(response => response.json())
         .then(departments => {
             const departmentsTable = document.getElementById('departments-table');
@@ -454,21 +465,7 @@ function initDepartmentActionButtons() {
 
 // Load worksites
 function loadWorksites() {
-    fetch('/api/worksites')
-        .then(response => {
-            if (!response.ok) {
-                // If API doesn't exist, use mock data for demo
-                return Promise.resolve({
-                    json: () => Promise.resolve([
-                        { id: 1, name: 'Office', location: 'Headquarters' },
-                        { id: 2, name: 'Site A', location: 'North Region' },
-                        { id: 3, name: 'Site B', location: 'South Region' },
-                        { id: 4, name: 'Remote', location: 'Various Locations' }
-                    ])
-                });
-            }
-            return response;
-        })
+    fetchApi('/api/worksites')
         .then(response => response.json())
         .then(worksites => {
             const worksitesTable = document.getElementById('worksites-table');
