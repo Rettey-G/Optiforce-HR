@@ -69,8 +69,8 @@ const mockDashboardStats = {
     ]
 };
 
-// Mock data for recent activities
-const mockRecentActivities = [
+// Mock data for recent activities - initial declaration
+let mockRecentActivities = [
     { id: 1, username: 'admin', action: 'CREATE', description: 'created a new employee record', timestamp: new Date(2025, 3, 23, 15, 30, 0).toISOString() },
     { id: 2, username: 'admin', action: 'UPDATE', description: 'updated department structure', timestamp: new Date(2025, 3, 23, 14, 45, 0).toISOString() },
     { id: 3, username: 'user1', action: 'LOGIN', description: 'logged into the system', timestamp: new Date(2025, 3, 23, 14, 30, 0).toISOString() },
@@ -141,7 +141,7 @@ mockDashboardStats.worksites = [
     { id: 2, name: 'Bowser', location: 'Fuel Delivery' }
 ];
 
-// Mock recent activities
+// Update mock recent activities with more relevant data
 mockRecentActivities = [
     { id: 1, username: 'admin', action: 'CREATE', description: 'Added new employee: Md Shahjahan', timestamp: new Date(2025, 3, 23, 15, 30, 0).toISOString() },
     { id: 2, username: 'admin', action: 'UPDATE', description: 'Updated salary for: Ahmed Sinaz', timestamp: new Date(2025, 3, 23, 14, 45, 0).toISOString() },
@@ -190,7 +190,7 @@ const mockTrainers = [
 
 console.log('All mock data initialized successfully');
 
-// API endpoint mapping
+// Define API endpoints before they're used in fetchApi
 const apiEndpoints = {
     '/api/dashboard/stats': mockDashboardStats,
     '/api/dashboard/recent-activities': { recent: mockRecentActivities },
