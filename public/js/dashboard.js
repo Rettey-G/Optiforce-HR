@@ -86,6 +86,12 @@ function createCharts(data) {
         if (deptData.length > 0) {
             createPieChart('departmentChart', deptData, 'Department Distribution');
         }
+        
+        // Worksite Chart - use worksiteDistribution if available
+        const worksiteData = data.worksiteDistribution || [];
+        if (worksiteData.length > 0) {
+            createPieChart('worksiteChart', worksiteData, 'Worksite Distribution');
+        }
 
         // Nationality Chart - fallback to mock data if not available
         const nationalityData = data.byNationality || [

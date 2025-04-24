@@ -165,11 +165,36 @@ mockDashboardStats.departments = [
     { id: 4, name: 'HR', description: 'Human Resources department' }
 ];
 
-// Hard-coded worksites data
-mockDashboardStats.worksites = [
-    { id: 1, name: 'Office', location: 'Main Office' },
-    { id: 2, name: 'Bowser', location: 'Fuel Delivery' }
-];
+// Calculate worksites data from employee records
+const calculateWorksiteDistribution = () => {
+    const worksites = {};
+    mockEmployees.forEach(emp => {
+        // Check all possible worksite field names
+        const worksite = emp.Worksite || emp['Work Site'] || emp.workSite || emp.worksite;
+        if (worksite) {
+            worksites[worksite] = (worksites[worksite] || 0) + 1;
+        }
+    });
+    
+    return Object.keys(worksites).map(name => ({
+        name,
+        count: worksites[name]
+    }));
+};
+
+// Generate worksite records for the dashboard
+const uniqueWorksites = [...new Set(mockEmployees.map(emp => {
+    return emp.Worksite || emp['Work Site'] || emp.workSite || emp.worksite;
+}).filter(Boolean))];
+
+mockDashboardStats.worksites = uniqueWorksites.map((name, index) => ({
+    id: index + 1,
+    name: name,
+    location: name + ' Location'
+}));
+
+// Add worksite distribution to dashboard stats
+mockDashboardStats.worksiteDistribution = calculateWorksiteDistribution();
 
 // Update mock recent activities with more relevant data
 mockRecentActivities = [
