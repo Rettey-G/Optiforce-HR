@@ -89,44 +89,132 @@ const mockUsers = [
 ];
 
 // Mock data for employees
-const mockEmployees = [
-    { 'EMP NO': '001', 'Employee Name': 'John Smith', 'Designation': 'CEO', 'Department': 'Executive', 'Worksite': 'Headquarters', 'JoinDate': '2018-01-15', 'Manager': '', 'Salary': 180000, 'Status': 'Active', 'Email': 'john.smith@optiforce.com', 'Phone': '(555) 123-4567' },
-    { 'EMP NO': '002', 'Employee Name': 'Sarah Johnson', 'Designation': 'Operations Director', 'Department': 'Operations', 'Worksite': 'Headquarters', 'JoinDate': '2018-03-10', 'Manager': '001', 'Salary': 145000, 'Status': 'Active', 'Email': 'sarah.johnson@optiforce.com', 'Phone': '(555) 234-5678' },
-    { 'EMP NO': '003', 'Employee Name': 'Michael Chen', 'Designation': 'Finance Director', 'Department': 'Finance', 'Worksite': 'Headquarters', 'JoinDate': '2018-02-20', 'Manager': '001', 'Salary': 142000, 'Status': 'Active', 'Email': 'michael.chen@optiforce.com', 'Phone': '(555) 345-6789' },
-    { 'EMP NO': '004', 'Employee Name': 'Emily Davis', 'Designation': 'Operations Manager', 'Department': 'Operations', 'Worksite': 'Site A', 'JoinDate': '2019-05-12', 'Manager': '002', 'Salary': 110000, 'Status': 'Active', 'Email': 'emily.davis@optiforce.com', 'Phone': '(555) 456-7890' },
-    { 'EMP NO': '005', 'Employee Name': 'Robert Wilson', 'Designation': 'Logistics Manager', 'Department': 'Operations', 'Worksite': 'Site B', 'JoinDate': '2019-06-18', 'Manager': '002', 'Salary': 105000, 'Status': 'Active', 'Email': 'robert.wilson@optiforce.com', 'Phone': '(555) 567-8901' },
-    { 'EMP NO': '006', 'Employee Name': 'Jessica Lee', 'Designation': 'Accounting Manager', 'Department': 'Finance', 'Worksite': 'Headquarters', 'JoinDate': '2019-04-22', 'Manager': '003', 'Salary': 108000, 'Status': 'Active', 'Email': 'jessica.lee@optiforce.com', 'Phone': '(555) 678-9012' },
-    { 'EMP NO': '007', 'Employee Name': 'David Martinez', 'Designation': 'Budget Manager', 'Department': 'Finance', 'Worksite': 'Headquarters', 'JoinDate': '2019-07-15', 'Manager': '003', 'Salary': 106000, 'Status': 'Active', 'Email': 'david.martinez@optiforce.com', 'Phone': '(555) 789-0123' },
-    { 'EMP NO': '008', 'Employee Name': 'Amanda Brown', 'Designation': 'Team Lead', 'Department': 'Operations', 'Worksite': 'Site A', 'JoinDate': '2020-01-10', 'Manager': '004', 'Salary': 85000, 'Status': 'Active', 'Email': 'amanda.brown@optiforce.com', 'Phone': '(555) 890-1234' },
-    { 'EMP NO': '009', 'Employee Name': 'Kevin Taylor', 'Designation': 'Senior Specialist', 'Department': 'Operations', 'Worksite': 'Site A', 'JoinDate': '2020-03-15', 'Manager': '004', 'Salary': 78000, 'Status': 'Active', 'Email': 'kevin.taylor@optiforce.com', 'Phone': '(555) 901-2345' },
-    { 'EMP NO': '010', 'Employee Name': 'Sophia Garcia', 'Designation': 'Specialist', 'Department': 'Operations', 'Worksite': 'Site B', 'JoinDate': '2020-05-20', 'Manager': '005', 'Salary': 72000, 'Status': 'Active', 'Email': 'sophia.garcia@optiforce.com', 'Phone': '(555) 012-3456' }
-];
+let mockEmployees = [];
 
-// Mock data for departments
-const mockDepartments = [
-    { id: 1, name: 'Executive', description: 'Executive Leadership' },
-    { id: 2, name: 'Operations', description: 'Operations department' },
-    { id: 3, name: 'Finance', description: 'Finance and Accounting department' },
-    { id: 4, name: 'HR', description: 'Human Resources department' },
-    { id: 5, name: 'IT', description: 'Information Technology department' }
-];
+// Load real employee data from the data folder
+async function loadJsonData(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to load ${url}: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error(`Error loading ${url}:`, error);
+        return [];
+    }
+}
 
-// Mock data for worksites
-const mockWorksites = [
-    { id: 1, name: 'Headquarters', location: 'Main Office' },
-    { id: 2, name: 'Site A', location: 'North Region' },
-    { id: 3, name: 'Site B', location: 'South Region' },
-    { id: 4, name: 'Remote', location: 'Various Locations' }
-];
+// Initialize data loading
+(async function() {
+    try {
+        // Load employees data
+        const employeesData = await loadJsonData('../data/employees.json');
+        if (employeesData && employeesData.length > 0) {
+            // Map the data structure to match what the app expects
+            mockEmployees = employeesData.map(emp => ({
+                'EMP NO': emp.employeeNumber || '',
+                'Employee Name': emp.name || '',
+                'Designation': emp.designation || '',
+                'Department': emp.department || '',
+                'Worksite': emp.workSite || emp.worksite || '',
+                'JoinDate': emp.joinedDate || '',
+                'Manager': '', // No manager info in the data
+                'Salary': parseFloat(emp.salaryUSD) || 0,
+                'Status': 'Active',
+                'Email': `${emp.name.toLowerCase().replace(/\s+/g, '.')}@optiforce.com`,
+                'Phone': emp.mobile || '',
+                'Image': emp.image || ''
+            }));
+            console.log(`Loaded ${mockEmployees.length} employees from data/employees.json`);
+        }
+        
+        // Update department distribution based on real data
+        if (mockEmployees.length > 0) {
+            const departments = {};
+            mockEmployees.forEach(emp => {
+                const dept = emp.Department;
+                if (dept) {
+                    departments[dept] = (departments[dept] || 0) + 1;
+                }
+            });
+            
+            mockDashboardStats.departmentDistribution = Object.keys(departments).map(name => ({
+                name,
+                count: departments[name]
+            }));
+            
+            // Update total employees count
+            mockDashboardStats.totalEmployees = mockEmployees.length;
+        }
+        
+        // Load departments data
+        const departmentsData = await loadJsonData('../data/departments.json');
+        if (departmentsData && departmentsData.length > 0) {
+            mockDashboardStats.departments = departmentsData;
+        }
+        
+        // Load worksites data
+        const worksitesData = await loadJsonData('../data/worksites.json');
+        if (worksitesData && worksitesData.length > 0) {
+            mockDashboardStats.worksites = worksitesData;
+        }
+        
+        // Load users data
+        const usersData = await loadJsonData('../data/users.json');
+        if (usersData && usersData.length > 0) {
+            mockUsers = usersData;
+        }
+        
+        // Load activities data
+        const activitiesData = await loadJsonData('../data/activities.json');
+        if (activitiesData && activitiesData.length > 0) {
+            mockRecentActivities = activitiesData.slice(0, 10); // Get the 10 most recent
+        }
+        
+        // Load leave applications data
+        const leaveData = await loadJsonData('../data/leave_applications.json');
+        if (leaveData && leaveData.length > 0) {
+            apiEndpoints['/api/leave/applications'] = leaveData;
+        }
+        
+        // Load payroll data
+        const payrollData = await loadJsonData('../data/salaries.json');
+        if (payrollData && payrollData.length > 0) {
+            apiEndpoints['/api/payroll/data'] = payrollData;
+        }
+        
+        // Load trainings data
+        const trainingsData = await loadJsonData('../data/trainings.json');
+        if (trainingsData && trainingsData.length > 0) {
+            apiEndpoints['/api/trainings'] = trainingsData;
+        }
+        
+        // Load trainers data
+        const trainersData = await loadJsonData('../data/trainers.json');
+        if (trainersData && trainersData.length > 0) {
+            apiEndpoints['/api/trainers'] = trainersData;
+        }
+        
+        console.log('All mock data loaded successfully from data folder');
+    } catch (error) {
+        console.error('Failed to load data:', error);
+    }
+})();
 
 // API endpoint mapping
 const apiEndpoints = {
     '/api/dashboard/stats': mockDashboardStats,
-    '/api/dashboard/recent-activities': mockRecentActivities,
+    '/api/dashboard/recent-activities': { recent: mockRecentActivities },
     '/api/users': mockUsers,
     '/api/employees': mockEmployees,
-    '/api/departments': mockDepartments,
-    '/api/worksites': mockWorksites
+    '/api/departments': mockDashboardStats.departments,
+    '/api/worksites': mockDashboardStats.worksites,
+    '/api/employees/names': mockEmployees.map(emp => ({ id: emp['EMP NO'], name: emp['Employee Name'] })),
+    '/api/leave/applications': [], // Will be loaded from leave_applications.json
+    '/api/payroll/data': [], // Will be loaded from salaries.json
+    '/api/trainings': [], // Will be loaded from trainings.json
+    '/api/trainers': [] // Will be loaded from trainers.json
 };
 
 // Generic API fetch function
