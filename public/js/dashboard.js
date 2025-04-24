@@ -3,9 +3,9 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Check if user is logged in
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
     if (!isLoggedIn) {
-        window.location.href = '/login.html';
+        window.location.href = 'login.html';
         return;
     }
 
@@ -18,7 +18,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 // Fetch and process dashboard data
 async function fetchDashboardData() {
     try {
-        const response = await fetch('/api/dashboard/stats');
+        // Use fetchApi from api-mock.js if it exists, otherwise use regular fetch
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const response = await fetchFunction('/api/dashboard/stats');
         const data = await response.json();
         updateDashboardStats(data);
         createCharts(data);
@@ -178,13 +180,15 @@ function setupActivitiesModal() {
 // Load recent activities (max 10)
 async function loadRecentActivities() {
     try {
-        const res = await fetch('/api/dashboard/recent-activities');
+        // Use fetchApi from api-mock.js if it exists, otherwise use regular fetch
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const res = await fetchFunction('/api/dashboard/recent-activities');
         const data = await res.json();
         
         const container = document.getElementById('activitiesList');
         if (!container) return;
 
-        renderActivities(container, data.recent.slice(0, 10));
+        renderActivities(container, data.recent ? data.recent.slice(0, 10) : data.slice(0, 10));
     } catch (err) {
         console.error('Failed to load recent activities:', err);
     }
@@ -193,13 +197,15 @@ async function loadRecentActivities() {
 // Load all activities for modal
 async function loadAllActivities() {
     try {
-        const res = await fetch('/api/dashboard/recent-activities');
+        // Use fetchApi from api-mock.js if it exists, otherwise use regular fetch
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const res = await fetchFunction('/api/dashboard/recent-activities');
         const data = await res.json();
         
         const container = document.getElementById('allActivitiesList');
         if (!container) return;
 
-        renderActivities(container, data.recent);
+        renderActivities(container, data.recent || data);
     } catch (err) {
         console.error('Failed to load all activities:', err);
     }
