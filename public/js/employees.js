@@ -525,7 +525,17 @@ function renderEmployeeGrid(employees) {
 function populateWorksiteFilter(employees) {
     const filter = document.getElementById('worksiteFilter');
     if (!filter) return;
-    const worksites = [...new Set(employees.map(e => e.Worksite).filter(Boolean))];
+    
+    // Extract all possible worksite values, checking all possible field names
+    const worksites = [...new Set(employees.map(e => {
+        // Check all possible field names for worksite
+        return e.Worksite || e['Work Site'] || e.workSite || e.worksite || 'Unknown';
+    }).filter(Boolean))];
+    
+    // Sort worksites alphabetically for better UX
+    worksites.sort();
+    
+    // Populate the filter dropdown
     filter.innerHTML = '<option value="">All Worksites</option>' +
         worksites.map(w => `<option value="${w}">${w}</option>`).join('');
 }
@@ -547,10 +557,11 @@ function filterEmployees() {
                             emp['EMP NO']?.toLowerCase().includes(searchValue) ||
                             emp['Designation']?.toLowerCase().includes(searchValue) ||
                             emp['Department']?.toLowerCase().includes(searchValue);
-        // Fix worksite filter to check both 'Worksite' and 'Work Site' fields
-        const matchesWorksite = !worksiteValue || 
-                              emp['Worksite'] === worksiteValue || 
-                              emp['Work Site'] === worksiteValue;
+        
+        // Check all possible worksite field names
+        const empWorksite = emp['Worksite'] || emp['Work Site'] || emp.workSite || emp.worksite || '';
+        const matchesWorksite = !worksiteValue || empWorksite === worksiteValue;
+        
         return matchesSearch && matchesWorksite;
     });
     
@@ -648,13 +659,16 @@ function createWorksiteChart(employees) {
     // Group employees by worksite
     const worksiteCounts = {};
     employees.forEach(emp => {
-        // Check both possible worksite field names
-        const worksite = emp['Worksite'] || emp['Work Site'] || 'Unknown';
+        // Check all possible field names for worksite
+        const worksite = emp['Worksite'] || emp['Work Site'] || emp.workSite || emp.worksite || 'Unknown';
         worksiteCounts[worksite] = (worksiteCounts[worksite] || 0) + 1;
     });
     
     // Prepare data for chart
     const data = Object.entries(worksiteCounts).map(([name, count]) => ({ name, count }));
+    
+    // Sort data by count in descending order
+    data.sort((a, b) => b.count - a.count);
     
     // Create chart
     const ctx = canvas.getContext('2d');
@@ -705,7 +719,16 @@ function createGenderChart(employees) {
     // Group employees by gender
     const genderCounts = {};
     employees.forEach(emp => {
-        const gender = emp['Gender'] || 'Unknown';
+        // Check all possible field names for gender and normalize values
+        let gender = emp['Gender'] || emp['gender'] || 'Unknown';
+        
+        // Normalize gender values for consistency
+        if (gender.toLowerCase() === 'male' || gender.toLowerCase() === 'm') {
+            gender = 'Male';
+        } else if (gender.toLowerCase() === 'female' || gender.toLowerCase() === 'f') {
+            gender = 'Female';
+        }
+        
         genderCounts[gender] = (genderCounts[gender] || 0) + 1;
     });
     
