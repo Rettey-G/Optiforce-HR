@@ -89,118 +89,106 @@ const mockUsers = [
 ];
 
 // Mock data for employees
-let mockEmployees = [];
+const mockEmployees = [
+    { 'EMP NO': 'FEM001', 'Employee Name': 'Ahmed Sinaz', 'Designation': 'Managing Director', 'Department': 'Admin', 'Worksite': 'Office', 'JoinDate': '2020-01-01', 'Manager': '', 'Salary': 1000, 'Status': 'Active', 'Email': 'ahmed.sinaz@optiforce.com', 'Phone': '9991960' },
+    { 'EMP NO': 'FEM002', 'Employee Name': 'Hussain Rasheed', 'Designation': 'Operations Manager', 'Department': 'Operations', 'Worksite': 'Office', 'JoinDate': '2020-02-15', 'Manager': 'FEM001', 'Salary': 800, 'Status': 'Active', 'Email': 'hussain.rasheed@optiforce.com', 'Phone': '7908523' },
+    { 'EMP NO': 'FEM003', 'Employee Name': 'Mohamed Naseer', 'Designation': 'Accountant', 'Department': 'Finance', 'Worksite': 'Office', 'JoinDate': '2020-03-10', 'Manager': 'FEM001', 'Salary': 750, 'Status': 'Active', 'Email': 'mohamed.naseer@optiforce.com', 'Phone': '7782095' },
+    { 'EMP NO': 'FEM004', 'Employee Name': 'Fathimath Shamma', 'Designation': 'HR Officer', 'Department': 'HR', 'Worksite': 'Office', 'JoinDate': '2020-04-05', 'Manager': 'FEM001', 'Salary': 700, 'Status': 'Active', 'Email': 'fathimath.shamma@optiforce.com', 'Phone': '7865432' },
+    { 'EMP NO': 'FEM005', 'Employee Name': 'Aishath Raufa', 'Designation': 'Admin Assistant', 'Department': 'Admin', 'Worksite': 'Office', 'JoinDate': '2020-05-20', 'Manager': 'FEM001', 'Salary': 650, 'Status': 'Active', 'Email': 'aishath.raufa@optiforce.com', 'Phone': '7908765' },
+    { 'EMP NO': 'FEM006', 'Employee Name': 'Ibrahim Manik', 'Designation': 'Driver', 'Department': 'Operations', 'Worksite': 'Bowser', 'JoinDate': '2021-01-10', 'Manager': 'FEM002', 'Salary': 500, 'Status': 'Active', 'Email': 'ibrahim.manik@optiforce.com', 'Phone': '7654321' },
+    { 'EMP NO': 'FEM007', 'Employee Name': 'Ali Rasheed', 'Designation': 'Driver', 'Department': 'Operations', 'Worksite': 'Bowser', 'JoinDate': '2021-02-15', 'Manager': 'FEM002', 'Salary': 500, 'Status': 'Active', 'Email': 'ali.rasheed@optiforce.com', 'Phone': '7908111' },
+    { 'EMP NO': 'FEM008', 'Employee Name': 'Mohamed Zahir', 'Designation': 'Driver', 'Department': 'Operations', 'Worksite': 'Bowser', 'JoinDate': '2021-01-11', 'Manager': 'FEM002', 'Salary': 500, 'Status': 'Active', 'Email': 'mohamed.zahir@optiforce.com', 'Phone': '7706226' },
+    { 'EMP NO': 'FEM009', 'Employee Name': 'Abdul Kalam Azad', 'Designation': 'Driver', 'Department': 'Operations', 'Worksite': 'Bowser', 'JoinDate': '2022-10-18', 'Manager': 'FEM002', 'Salary': 500, 'Status': 'Active', 'Email': 'abdul.kalam@optiforce.com', 'Phone': '9141139' },
+    { 'EMP NO': 'FEM010', 'Employee Name': 'Dinahar Jojo Trimothy', 'Designation': 'Driver', 'Department': 'Operations', 'Worksite': 'Bowser', 'JoinDate': '2022-05-16', 'Manager': 'FEM002', 'Salary': 500, 'Status': 'Active', 'Email': 'dinahar.jojo@optiforce.com', 'Phone': '9651444' },
+    { 'EMP NO': 'FEM012', 'Employee Name': 'Md Rubel', 'Designation': 'Driver', 'Department': 'Operations', 'Worksite': 'Bowser', 'JoinDate': '2022-05-16', 'Manager': 'FEM002', 'Salary': 500, 'Status': 'Active', 'Email': 'md.rubel@optiforce.com', 'Phone': '7867564' },
+    { 'EMP NO': 'FEM013', 'Employee Name': 'Md Shahin Alam', 'Designation': 'Driver', 'Department': 'Operations', 'Worksite': 'Bowser', 'JoinDate': '2022-11-01', 'Manager': 'FEM002', 'Salary': 500, 'Status': 'Active', 'Email': 'md.shahin@optiforce.com', 'Phone': '7989765' },
+    { 'EMP NO': 'FEM014', 'Employee Name': 'Md Shamim Hossain', 'Designation': 'Driver', 'Department': 'Operations', 'Worksite': 'Bowser', 'JoinDate': '2022-11-01', 'Manager': 'FEM002', 'Salary': 500, 'Status': 'Active', 'Email': 'md.shamim@optiforce.com', 'Phone': '7654987' },
+    { 'EMP NO': 'FEM015', 'Employee Name': 'Md Harun', 'Designation': 'Driver', 'Department': 'Operations', 'Worksite': 'Bowser', 'JoinDate': '2022-11-01', 'Manager': 'FEM002', 'Salary': 500, 'Status': 'Active', 'Email': 'md.harun@optiforce.com', 'Phone': '7908000' },
+    { 'EMP NO': 'FEM016', 'Employee Name': 'Md Shahjahan', 'Designation': 'Driver', 'Department': 'Operations', 'Worksite': 'Bowser', 'JoinDate': '2022-11-01', 'Manager': 'FEM002', 'Salary': 500, 'Status': 'Active', 'Email': 'md.shahjahan@optiforce.com', 'Phone': '7908999' }
+];
 
-// Load real employee data from the data folder
-async function loadJsonData(url) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Failed to load ${url}: ${response.status}`);
+// Calculate department distribution
+const calculateDepartmentDistribution = () => {
+    const departments = {};
+    mockEmployees.forEach(emp => {
+        const dept = emp.Department;
+        if (dept) {
+            departments[dept] = (departments[dept] || 0) + 1;
         }
-        return await response.json();
-    } catch (error) {
-        console.error(`Error loading ${url}:`, error);
-        return [];
-    }
-}
+    });
+    
+    return Object.keys(departments).map(name => ({
+        name,
+        count: departments[name]
+    }));
+};
 
-// Initialize data loading
-(async function() {
-    try {
-        // Load employees data
-        const employeesData = await loadJsonData('../data/employees.json');
-        if (employeesData && employeesData.length > 0) {
-            // Map the data structure to match what the app expects
-            mockEmployees = employeesData.map(emp => ({
-                'EMP NO': emp.employeeNumber || '',
-                'Employee Name': emp.name || '',
-                'Designation': emp.designation || '',
-                'Department': emp.department || '',
-                'Worksite': emp.workSite || emp.worksite || '',
-                'JoinDate': emp.joinedDate || '',
-                'Manager': '', // No manager info in the data
-                'Salary': parseFloat(emp.salaryUSD) || 0,
-                'Status': 'Active',
-                'Email': `${emp.name.toLowerCase().replace(/\s+/g, '.')}@optiforce.com`,
-                'Phone': emp.mobile || '',
-                'Image': emp.image || ''
-            }));
-            console.log(`Loaded ${mockEmployees.length} employees from data/employees.json`);
-        }
-        
-        // Update department distribution based on real data
-        if (mockEmployees.length > 0) {
-            const departments = {};
-            mockEmployees.forEach(emp => {
-                const dept = emp.Department;
-                if (dept) {
-                    departments[dept] = (departments[dept] || 0) + 1;
-                }
-            });
-            
-            mockDashboardStats.departmentDistribution = Object.keys(departments).map(name => ({
-                name,
-                count: departments[name]
-            }));
-            
-            // Update total employees count
-            mockDashboardStats.totalEmployees = mockEmployees.length;
-        }
-        
-        // Load departments data
-        const departmentsData = await loadJsonData('../data/departments.json');
-        if (departmentsData && departmentsData.length > 0) {
-            mockDashboardStats.departments = departmentsData;
-        }
-        
-        // Load worksites data
-        const worksitesData = await loadJsonData('../data/worksites.json');
-        if (worksitesData && worksitesData.length > 0) {
-            mockDashboardStats.worksites = worksitesData;
-        }
-        
-        // Load users data
-        const usersData = await loadJsonData('../data/users.json');
-        if (usersData && usersData.length > 0) {
-            mockUsers = usersData;
-        }
-        
-        // Load activities data
-        const activitiesData = await loadJsonData('../data/activities.json');
-        if (activitiesData && activitiesData.length > 0) {
-            mockRecentActivities = activitiesData.slice(0, 10); // Get the 10 most recent
-        }
-        
-        // Load leave applications data
-        const leaveData = await loadJsonData('../data/leave_applications.json');
-        if (leaveData && leaveData.length > 0) {
-            apiEndpoints['/api/leave/applications'] = leaveData;
-        }
-        
-        // Load payroll data
-        const payrollData = await loadJsonData('../data/salaries.json');
-        if (payrollData && payrollData.length > 0) {
-            apiEndpoints['/api/payroll/data'] = payrollData;
-        }
-        
-        // Load trainings data
-        const trainingsData = await loadJsonData('../data/trainings.json');
-        if (trainingsData && trainingsData.length > 0) {
-            apiEndpoints['/api/trainings'] = trainingsData;
-        }
-        
-        // Load trainers data
-        const trainersData = await loadJsonData('../data/trainers.json');
-        if (trainersData && trainersData.length > 0) {
-            apiEndpoints['/api/trainers'] = trainersData;
-        }
-        
-        console.log('All mock data loaded successfully from data folder');
-    } catch (error) {
-        console.error('Failed to load data:', error);
-    }
-})();
+// Update dashboard stats with real data
+mockDashboardStats.totalEmployees = mockEmployees.length;
+mockDashboardStats.departmentDistribution = calculateDepartmentDistribution();
+
+// Hard-coded departments data
+mockDashboardStats.departments = [
+    { id: 1, name: 'Admin', description: 'Administration department' },
+    { id: 2, name: 'Operations', description: 'Operations department' },
+    { id: 3, name: 'Finance', description: 'Finance department' },
+    { id: 4, name: 'HR', description: 'Human Resources department' }
+];
+
+// Hard-coded worksites data
+mockDashboardStats.worksites = [
+    { id: 1, name: 'Office', location: 'Main Office' },
+    { id: 2, name: 'Bowser', location: 'Fuel Delivery' }
+];
+
+// Mock recent activities
+mockRecentActivities = [
+    { id: 1, username: 'admin', action: 'CREATE', description: 'Added new employee: Md Shahjahan', timestamp: new Date(2025, 3, 23, 15, 30, 0).toISOString() },
+    { id: 2, username: 'admin', action: 'UPDATE', description: 'Updated salary for: Ahmed Sinaz', timestamp: new Date(2025, 3, 23, 14, 45, 0).toISOString() },
+    { id: 3, username: 'admin', action: 'LOGIN', description: 'Logged into the system', timestamp: new Date(2025, 3, 23, 14, 30, 0).toISOString() },
+    { id: 4, username: 'admin', action: 'APPROVE', description: 'Approved leave for: Fathimath Shamma', timestamp: new Date(2025, 3, 23, 13, 15, 0).toISOString() },
+    { id: 5, username: 'admin', action: 'VIEW', description: 'Viewed employee records', timestamp: new Date(2025, 3, 23, 12, 0, 0).toISOString() },
+    { id: 6, username: 'admin', action: 'UPDATE', description: 'Updated company policies', timestamp: new Date(2025, 3, 22, 16, 45, 0).toISOString() }
+];
+
+// Mock leave applications
+const mockLeaveApplications = [
+    { id: 1, employeeId: 'FEM004', employeeName: 'Fathimath Shamma', leaveType: 'Annual', startDate: '2025-05-01', endDate: '2025-05-05', days: 5, reason: 'Family vacation', status: 'Approved', appliedDate: '2025-04-15' },
+    { id: 2, employeeId: 'FEM006', employeeName: 'Ibrahim Manik', leaveType: 'Sick', startDate: '2025-04-28', endDate: '2025-04-29', days: 2, reason: 'Not feeling well', status: 'Pending', appliedDate: '2025-04-27' },
+    { id: 3, employeeId: 'FEM005', employeeName: 'Aishath Raufa', leaveType: 'Annual', startDate: '2025-06-10', endDate: '2025-06-15', days: 6, reason: 'Personal', status: 'Pending', appliedDate: '2025-04-20' },
+    { id: 4, employeeId: 'FEM008', employeeName: 'Mohamed Zahir', leaveType: 'Casual', startDate: '2025-05-12', endDate: '2025-05-12', days: 1, reason: 'Family event', status: 'Approved', appliedDate: '2025-05-05' },
+    { id: 5, employeeId: 'FEM003', employeeName: 'Mohamed Naseer', leaveType: 'Sick', startDate: '2025-04-18', endDate: '2025-04-19', days: 2, reason: 'Fever', status: 'Rejected', appliedDate: '2025-04-18' }
+];
+
+// Mock payroll data
+const mockPayrollData = mockEmployees.map(emp => ({
+    employeeId: emp['EMP NO'],
+    employeeName: emp['Employee Name'],
+    department: emp.Department,
+    designation: emp.Designation,
+    basicSalary: emp.Salary,
+    allowances: Math.floor(emp.Salary * 0.2),
+    deductions: Math.floor(emp.Salary * 0.05),
+    netSalary: Math.floor(emp.Salary * 1.15),
+    paymentDate: '2025-04-01',
+    paymentStatus: 'Paid'
+}));
+
+// Mock trainings data
+const mockTrainings = [
+    { id: 1, title: 'Safety Training', description: 'Basic safety procedures', startDate: '2025-05-15', endDate: '2025-05-16', department: 'Operations', trainer: 'External Trainer', status: 'Scheduled' },
+    { id: 2, title: 'Customer Service', description: 'Improving customer interactions', startDate: '2025-06-10', endDate: '2025-06-11', department: 'Admin', trainer: 'Ahmed Sinaz', status: 'Scheduled' },
+    { id: 3, title: 'Financial Reporting', description: 'New accounting procedures', startDate: '2025-04-05', endDate: '2025-04-06', department: 'Finance', trainer: 'Mohamed Naseer', status: 'Completed' }
+];
+
+// Mock trainers data
+const mockTrainers = [
+    { id: 1, name: 'Ahmed Sinaz', specialization: 'Management', contact: '9991960', email: 'ahmed.sinaz@optiforce.com' },
+    { id: 2, name: 'Mohamed Naseer', specialization: 'Finance', contact: '7782095', email: 'mohamed.naseer@optiforce.com' },
+    { id: 3, name: 'External Trainer', specialization: 'Safety', contact: '7777777', email: 'trainer@safetyorg.com' }
+];
+
+console.log('All mock data initialized successfully');
 
 // API endpoint mapping
 const apiEndpoints = {
@@ -211,10 +199,10 @@ const apiEndpoints = {
     '/api/departments': mockDashboardStats.departments,
     '/api/worksites': mockDashboardStats.worksites,
     '/api/employees/names': mockEmployees.map(emp => ({ id: emp['EMP NO'], name: emp['Employee Name'] })),
-    '/api/leave/applications': [], // Will be loaded from leave_applications.json
-    '/api/payroll/data': [], // Will be loaded from salaries.json
-    '/api/trainings': [], // Will be loaded from trainings.json
-    '/api/trainers': [] // Will be loaded from trainers.json
+    '/api/leave/applications': mockLeaveApplications,
+    '/api/payroll/data': mockPayrollData,
+    '/api/trainings': mockTrainings,
+    '/api/trainers': mockTrainers
 };
 
 // Generic API fetch function
