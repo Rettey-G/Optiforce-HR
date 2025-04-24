@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Management - OptiForce HR</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/header-footer.css">
+    <link rel="stylesheet" href="css/leave.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    <main class="container">
+        <section class="leave-header">
+            <h2>Leave Management</h2>
+            <div class="leave-actions">
+                <button id="apply-leave-btn" class="btn primary-btn"><i class="fas fa-plus"></i> Apply for Leave</button>
+                <button id="view-leave-balances-btn" class="btn secondary-btn"><i class="fas fa-calendar-check"></i> View Leave Balances</button>
+                <div class="filter-section">
+                    <div class="status-filter">
+                        <label for="status-filter">Status:</label>
+                        <select id="status-filter">
+                            <option value="all">All</option>
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="date-filter">
+                        <label for="date-filter">Period:</label>
+                        <select id="date-filter">
+                            <option value="all">All Time</option>
+                            <option value="current-month">Current Month</option>
+                            <option value="current-year">Current Year</option>
+                            <option value="custom">Custom Range</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="leave-table-section">
+            <div class="table-header">
+                <h3>Leave Applications</h3>
+                <div class="table-actions">
+                    <button id="export-leave-btn" class="btn secondary-btn"><i class="fas fa-file-export"></i> Export</button>
+                    <button id="print-leave-btn" class="btn secondary-btn"><i class="fas fa-print"></i> Print</button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="leave-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Employee</th>
+                            <th>Leave Type</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Days</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leave-table-body">
+                        <!-- Leave data will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Apply Leave Modal -->
+        <div id="apply-leave-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Apply for Leave</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="apply-leave-form">
+                        <div class="form-group">
+                            <label for="leave-type">Leave Type:</label>
+                            <select id="leave-type" required>
+                                <option value="">Select Leave Type</option>
+                                <option value="annual">Annual Leave</option>
+                                <option value="sick">Sick Leave</option>
+                                <option value="casual">Casual Leave</option>
+                                <option value="maternity">Maternity Leave</option>
+                                <option value="paternity">Paternity Leave</option>
+                                <option value="unpaid">Unpaid Leave</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="leave-from">From Date:</label>
+                            <input type="date" id="leave-from" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="leave-to">To Date:</label>
+                            <input type="date" id="leave-to" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="leave-days">Days:</label>
+                            <input type="number" id="leave-days" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="leave-reason">Reason:</label>
+                            <textarea id="leave-reason" rows="3" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn primary-btn">Submit</button>
+                            <button type="button" class="btn secondary-btn close">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leave Balances Modal -->
+        <div id="leave-balances-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Leave Balances</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div id="leave-balances-content">
+                        <!-- Leave balances will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leave Details Modal -->
+        <div id="leave-details-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Leave Details</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div id="leave-details-content">
+                        <!-- Leave details will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="js/api-mock.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/leave.js"></script>
+</body>
+</html>

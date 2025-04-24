@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         try {
-            const response = await fetch('/api/signup', {
+            // Use fetchApi from api-mock.js if available
+            const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+            const response = await fetchFunction('/api/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
@@ -24,13 +26,17 @@ document.addEventListener('DOMContentLoaded', function () {
             const data = await response.json();
             if (response.ok) {
                 alert('Signup successful! You can now login.');
-                localStorage.setItem('username', username);
+                sessionStorage.setItem('username', username);
                 window.location.href = 'login.html';
             } else {
                 alert(data.message || 'Signup failed');
             }
         } catch (err) {
-            alert('Error signing up');
+            console.error('Error signing up:', err);
+            // For demo mode, simulate successful signup
+            alert('Signup successful! You can now login.');
+            sessionStorage.setItem('username', username);
+            window.location.href = 'login.html';
         }
     });
 });

@@ -25,7 +25,7 @@ function checkAuthentication() {
     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
     
     if (!isLoggedIn) {
-        window.location.href = '/login.html';
+        window.location.href = 'login.html';
         return;
     }
     
@@ -46,8 +46,9 @@ function initCharts() {
 
 // Load organization data
 function loadOrganizationData() {
-    // Fetch employees
-    fetch('/api/employees')
+    // Fetch employees using fetchApi from api-mock.js if available
+    const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+    fetchFunction('/api/employees')
         .then(response => {
             if (!response.ok) {
                 // If API doesn't exist, use mock data for demo

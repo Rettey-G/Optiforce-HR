@@ -97,8 +97,9 @@ const mockTrainings = [
 // Fetch data functions
 async function fetchTrainers() {
     try {
-        // Try to fetch from API first
-        const response = await fetch('/api/trainers');
+        // Use fetchApi from api-mock.js if available
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const response = await fetchFunction('/api/trainers');
         if (response.ok) {
             trainers = await response.json();
         } else {
@@ -120,8 +121,9 @@ async function fetchTrainers() {
 
 async function fetchTrainings() {
     try {
-        // Try to fetch from API first
-        const response = await fetch('/api/trainings');
+        // Use fetchApi from api-mock.js if available
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const response = await fetchFunction('/api/trainings');
         if (response.ok) {
             trainings = await response.json();
         } else {
@@ -208,8 +210,9 @@ const mockDepartments = [
 
 async function fetchEmployees() {
     try {
-        // Try to fetch from API first
-        const response = await fetch('/api/employees');
+        // Use fetchApi from api-mock.js if available
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const response = await fetchFunction('/api/employees');
         if (response.ok) {
             employees = await response.json();
         } else {
@@ -231,8 +234,9 @@ async function fetchEmployees() {
 
 async function fetchWorksites() {
     try {
-        // Try to fetch from API first
-        const response = await fetch('/api/worksites');
+        // Use fetchApi from api-mock.js if available
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const response = await fetchFunction('/api/worksites');
         if (response.ok) {
             worksites = await response.json();
         } else {
@@ -254,7 +258,9 @@ async function fetchWorksites() {
 
 async function fetchDepartments() {
     try {
-        const response = await fetch('/api/departments');
+        // Use fetchApi from api-mock.js if available
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const response = await fetchFunction('/api/departments');
         departments = await response.json();
         updateDepartmentFilter();
     } catch (err) {

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - OptiForce HR</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/header-footer.css">
+    <link rel="stylesheet" href="css/reports.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    <main class="container">
+        <section class="reports-header">
+            <h2>Reports</h2>
+            <div class="reports-actions">
+                <div class="report-type-filter">
+                    <label for="report-type">Report Type:</label>
+                    <select id="report-type">
+                        <option value="employee">Employee Reports</option>
+                        <option value="attendance">Attendance Reports</option>
+                        <option value="leave">Leave Reports</option>
+                        <option value="payroll">Payroll Reports</option>
+                        <option value="training">Training Reports</option>
+                    </select>
+                </div>
+                <div class="date-range-filter">
+                    <label for="date-from">From:</label>
+                    <input type="date" id="date-from">
+                    <label for="date-to">To:</label>
+                    <input type="date" id="date-to">
+                </div>
+                <button id="generate-report-btn" class="btn primary-btn"><i class="fas fa-file-alt"></i> Generate Report</button>
+            </div>
+        </section>
+
+        <section class="reports-grid">
+            <div class="report-card" data-type="employee">
+                <div class="report-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="report-info">
+                    <h3>Employee Summary</h3>
+                    <p>Overview of all employees including department, worksite, and status distribution.</p>
+                </div>
+                <button class="btn secondary-btn">Generate</button>
+            </div>
+            
+            <div class="report-card" data-type="attendance">
+                <div class="report-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="report-info">
+                    <h3>Attendance Summary</h3>
+                    <p>Overview of employee attendance, late arrivals, and early departures.</p>
+                </div>
+                <button class="btn secondary-btn">Generate</button>
+            </div>
+            
+            <div class="report-card" data-type="leave">
+                <div class="report-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="report-info">
+                    <h3>Leave Summary</h3>
+                    <p>Overview of leave applications, approvals, and leave balance by employee.</p>
+                </div>
+                <button class="btn secondary-btn">Generate</button>
+            </div>
+            
+            <div class="report-card" data-type="payroll">
+                <div class="report-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="report-info">
+                    <h3>Payroll Summary</h3>
+                    <p>Overview of salary disbursements, allowances, and deductions.</p>
+                </div>
+                <button class="btn secondary-btn">Generate</button>
+            </div>
+            
+            <div class="report-card" data-type="training">
+                <div class="report-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="report-info">
+                    <h3>Training Summary</h3>
+                    <p>Overview of training programs, participation, and completion rates.</p>
+                </div>
+                <button class="btn secondary-btn">Generate</button>
+            </div>
+            
+            <div class="report-card" data-type="custom">
+                <div class="report-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="report-info">
+                    <h3>Custom Report</h3>
+                    <p>Create a custom report with specific parameters and filters.</p>
+                </div>
+                <button class="btn secondary-btn">Generate</button>
+            </div>
+        </section>
+
+        <section class="report-preview-section" id="report-preview-section" style="display: none;">
+            <div class="report-preview-header">
+                <h3 id="report-preview-title">Report Preview</h3>
+                <div class="report-actions">
+                    <button id="export-report-btn" class="btn secondary-btn"><i class="fas fa-file-export"></i> Export</button>
+                    <button id="print-report-btn" class="btn secondary-btn"><i class="fas fa-print"></i> Print</button>
+                    <button id="close-preview-btn" class="btn secondary-btn"><i class="fas fa-times"></i> Close</button>
+                </div>
+            </div>
+            <div class="report-preview-content" id="report-preview-content">
+                <!-- Report content will be loaded here -->
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+    <script src="js/api-mock.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/reports.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

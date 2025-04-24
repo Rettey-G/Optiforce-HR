@@ -24,7 +24,8 @@ function setCurrentMonth() {
 
 async function loadEmployees() {
     try {
-        const res = await fetch('/api/employees/names');
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const res = await fetchFunction('/api/employees/names');
         const employees = await res.json();
         const select = document.getElementById('employee-select');
         select.innerHTML = '<option value="">All Employees</option>';
@@ -41,7 +42,8 @@ async function loadPayrollData() {
     const employeeId = document.getElementById('employee-select').value;
     
     try {
-        const res = await fetch(`/api/payroll?month=${month}${employeeId ? `&employeeId=${employeeId}` : ''}`);
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const res = await fetchFunction(`/api/payroll?month=${month}${employeeId ? `&employeeId=${employeeId}` : ''}`);
         const data = await res.json();
         
         renderPayrollTable(data.payroll);

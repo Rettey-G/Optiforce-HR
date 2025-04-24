@@ -14,7 +14,9 @@ export async function loadRecentActivitiesOnEmployeesPage() {
     if (!container) return;
     container.innerHTML = '<div style="color:#888;font-size:13px;">Loading recent activities...</div>';
     try {
-        const res = await fetch('/api/dashboard/recent-activities');
+        // Use fetchApi from api-mock.js if available
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const res = await fetchFunction('/api/dashboard/recent-activities');
         const data = await res.json();
         if (!data.recent || !data.recent.length) {
             container.innerHTML = '<div style="color:#888;font-size:13px;">No recent activities.</div>';
@@ -448,7 +450,9 @@ function showViewEmployeeModal(emp = {}) {
 
 async function loadAndRenderEmployees() {
     try {
-        const res = await fetch('/api/employees');
+        // Use fetchApi from api-mock.js if available
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const res = await fetchFunction('/api/employees');
         if (!res.ok) {
             throw new Error('Failed to fetch employees');
         }
@@ -558,7 +562,9 @@ function createCharts(data) {
 // Department and Worksite Management
 async function loadDepartments() {
     try {
-        const response = await fetch('/api/departments');
+        // Use fetchApi from api-mock.js if available
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const response = await fetchFunction('/api/departments');
         const departments = await response.json();
         renderDepartments(departments);
         updateDepartmentSelect(departments);
@@ -569,7 +575,9 @@ async function loadDepartments() {
 
 async function loadWorksites() {
     try {
-        const response = await fetch('/api/worksites');
+        // Use fetchApi from api-mock.js if available
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const response = await fetchFunction('/api/worksites');
         const worksites = await response.json();
         renderWorksites(worksites);
         updateWorksiteSelect(worksites);

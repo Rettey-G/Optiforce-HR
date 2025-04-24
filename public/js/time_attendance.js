@@ -29,7 +29,9 @@ async function populateEmployeeDropdown() {
     const select = document.getElementById('employee-select');
     select.innerHTML = '<option value="">All Employees</option>';
     try {
-        const res = await fetch('/api/employees/names');
+        // Use fetchApi from api-mock.js if available
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const res = await fetchFunction('/api/employees/names');
         const employees = await res.json();
         console.log('[DEBUG] Employees fetched:', employees);
         if (employees.length === 0) {

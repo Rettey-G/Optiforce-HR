@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadRecentActivities() {
     try {
-        const res = await fetch('/api/dashboard/recent-activities');
+        // Use fetchApi from api-mock.js if available
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const res = await fetchFunction('/api/dashboard/recent-activities');
         const data = await res.json();
         const container = document.getElementById('activities-list');
         container.innerHTML = '';
