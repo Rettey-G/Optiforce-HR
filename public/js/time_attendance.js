@@ -254,14 +254,52 @@ function renderSummaryBox(summary = null) {
 }
 
 function getWeekDates(weekStr) {
-    const [year, week] = weekStr.split('-W');
-    const d = new Date(year, 0, 1 + (week - 1) * 7);
-    d.setDate(d.getDate() - d.getDay() + 1);
-    return Array.from({length: 7}, (_, i) => {
-        const date = new Date(d);
-        date.setDate(d.getDate() + i);
-        return date.toISOString().slice(0,10);
-    });
+    try {
+        // Handle case where weekStr is not provided or invalid
+        if (!weekStr || !weekStr.includes('-W')) {
+            // Default to current week
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const currentWeek = getWeekNumber(now);
+            weekStr = `${currentYear}-W${currentWeek.toString().padStart(2, '0')}`;
+        }
+        
+        const [year, weekPart] = weekStr.split('-W');
+        const week = parseInt(weekPart, 10);
+        
+        // Create a date for Jan 1 of the year
+        const d = new Date(parseInt(year, 10), 0, 1);
+        
+        // Add days until we reach the first day of the week (Monday)
+        const dayOfWeek = d.getDay(); // 0 = Sunday, 1 = Monday, etc.
+        const daysToAdd = (week - 1) * 7 + (dayOfWeek === 0 ? 1 : 1 - dayOfWeek);
+        d.setDate(d.getDate() + daysToAdd);
+        
+        // Generate array of dates for the week
+        return Array.from({length: 7}, (_, i) => {
+            const date = new Date(d);
+            date.setDate(d.getDate() + i);
+            return date.toISOString().slice(0,10);
+        });
+    } catch (error) {
+        console.error('Error generating week dates:', error);
+        // Return current week as fallback
+        const today = new Date();
+        return Array.from({length: 7}, (_, i) => {
+            const date = new Date(today);
+            date.setDate(today.getDate() - today.getDay() + i + 1); // Start from Monday
+            return date.toISOString().slice(0,10);
+        });
+    }
+}
+
+// Helper function to get the week number from a date
+function getWeekNumber(date) {
+    const d = new Date(date);
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() + 4 - (d.getDay() || 7)); // Set to nearest Thursday
+    const yearStart = new Date(d.getFullYear(), 0, 1);
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
 }
 
 function setupAttendanceButtons() {

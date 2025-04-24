@@ -4,17 +4,38 @@
  */
 
 // Helper function to handle API calls with fallback mock data
-function fetchWithMockFallback(url, mockData) {
-    return fetch(url)
+function fetchWithMockFallback(url, options, mockData) {
+    // In static deployment, immediately return mock data without attempting real fetch
+    if (window.location.hostname === 'opitiforcepro.netlify.app' || 
+        window.location.hostname === 'optiforce-hr-dashboard.windsurf.build' ||
+        window.location.hostname.includes('netlify') ||
+        window.location.hostname.includes('windsurf')) {
+        console.log(`Static deployment detected, using mock data for ${url}`);
+        return Promise.resolve({
+            ok: true,
+            json: () => Promise.resolve(mockData)
+        });
+    }
+    
+    // For local development, try real fetch first
+    return fetch(url, options)
         .then(response => {
             if (!response.ok) {
                 console.log(`API endpoint ${url} not available, using mock data`);
                 // If API doesn't exist, use mock data
-                return Promise.resolve({
+                return {
+                    ok: true,
                     json: () => Promise.resolve(mockData)
-                });
+                };
             }
             return response;
+        })
+        .catch(error => {
+            console.log(`Fetch error for ${url}, using mock data:`, error);
+            return {
+                ok: true,
+                json: () => Promise.resolve(mockData)
+            };
         });
 }
 
@@ -109,7 +130,31 @@ const apiEndpoints = {
 };
 
 // Generic API fetch function
-function fetchApi(endpoint) {
-    const mockData = apiEndpoints[endpoint] || [];
-    return fetchWithMockFallback(endpoint, mockData);
+function fetchApi(endpoint, options = {}) {
+    // Find the matching mock data for this endpoint
+    let mockData = {};
+    
+    // Check for exact endpoint match
+    if (apiEndpoints[endpoint]) {
+        mockData = apiEndpoints[endpoint];
+    } else {
+        // Check for pattern matches (e.g., /api/employees/123 should match /api/employees/:id)
+        for (const key in apiEndpoints) {
+            // Convert endpoint patterns like '/api/employees/:id' to regex
+            const pattern = key.replace(/:\w+/g, '[^/]+');
+            const regex = new RegExp(`^${pattern}$`);
+            
+            if (regex.test(endpoint)) {
+                mockData = apiEndpoints[key];
+                break;
+            }
+        }
+    }
+    
+    // If still no match, provide empty array or object as fallback
+    if (!mockData || Object.keys(mockData).length === 0) {
+        mockData = endpoint.includes('dashboard') ? { stats: {}, recent: [] } : [];
+    }
+    
+    return fetchWithMockFallback(endpoint, options, mockData);
 }

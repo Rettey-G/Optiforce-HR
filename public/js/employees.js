@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadWorksites();
 });
 
-export async function loadRecentActivitiesOnEmployeesPage() {
+async function loadRecentActivitiesOnEmployeesPage() {
     const container = document.getElementById('recentActivities');
     if (!container) return;
     container.innerHTML = '<div style="color:#888;font-size:13px;">Loading recent activities...</div>';
