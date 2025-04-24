@@ -9,10 +9,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadRecentActivitiesOnEmployeesPage();
 });
 
-function setupSelectors() {
-    // Populate employee dropdown (dummy data for demo)
+async function setupSelectors() {
+    // Populate employee dropdown with real data
     const select = document.getElementById('employee-select');
-    select.innerHTML += '<option value="emp1">John Doe</option><option value="emp2">Jane Smith</option>';
+    try {
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const response = await fetchFunction('/api/employees/names');
+        if (response.ok) {
+            const employees = await response.json();
+            select.innerHTML = employees.map(emp => `<option value="${emp.id}">${emp.name}</option>`).join('');
+        } else {
+            select.innerHTML = '<option value="">No employees found</option>';
+        }
+    } catch (err) {
+        select.innerHTML = '<option value="">Error loading employees</option>';
+    }
     // Week selector defaults to this week
     document.getElementById('week-selector').value = getCurrentWeek();
     document.getElementById('load-week-btn').onclick = loadTimesheet;
@@ -27,23 +38,51 @@ function getCurrentWeek() {
 
 async function loadTimesheet() {
     const wrapper = document.getElementById('timesheet-wrapper');
-    // Dummy table for demo
-    wrapper.innerHTML = `<table class="timesheet-table"><thead><tr><th>Date</th><th>Clock In</th><th>Clock Out</th><th>Status</th></tr></thead><tbody>
-        <tr><td>2025-04-14</td><td>08:55</td><td>17:03</td><td>Present</td></tr>
-        <tr><td>2025-04-15</td><td>09:10</td><td>17:00</td><td>Late</td></tr>
-        <tr><td>2025-04-16</td><td>08:57</td><td>16:55</td><td>Present</td></tr>
-        <tr><td>2025-04-17</td><td>08:50</td><td>17:05</td><td>Present</td></tr>
-        <tr><td>2025-04-18</td><td>09:05</td><td>16:50</td><td>Absent</td></tr>
-        <tr><td>2025-04-19</td><td>08:59</td><td>17:02</td><td>Present</td></tr>
-        <tr><td>2025-04-20</td><td>08:56</td><td>17:01</td><td>Present</td></tr>
-    </tbody></table>`;
+    const employeeId = document.getElementById('employee-select').value;
+    const week = document.getElementById('week-selector').value;
+    try {
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const response = await fetchFunction(`/api/attendance?employeeId=${employeeId}&week=${week}`);
+        if (response.ok) {
+            const timesheet = await response.json();
+            if (Array.isArray(timesheet) && timesheet.length > 0) {
+                wrapper.innerHTML = `<table class="timesheet-table"><thead><tr><th>Date</th><th>Clock In</th><th>Clock Out</th><th>Status</th></tr></thead><tbody>` +
+                    timesheet.map(row => `<tr><td>${row.date}</td><td>${row.clockIn}</td><td>${row.clockOut}</td><td>${row.status}</td></tr>`).join('') +
+                    `</tbody></table>`;
+            } else {
+                wrapper.innerHTML = '<div>No attendance records found for this week.</div>';
+            }
+        } else {
+            wrapper.innerHTML = '<div>Error loading timesheet.</div>';
+        }
+    } catch (err) {
+        wrapper.innerHTML = '<div>Error loading timesheet.</div>';
+    }
 }
 
 async function loadAttendanceSummary() {
-    document.getElementById('present-count').textContent = 5;
-    document.getElementById('absent-count').textContent = 1;
-    document.getElementById('overtime-hours').textContent = '2 hrs';
-    document.getElementById('sick-count').textContent = 0;
+    // Fetch attendance summary from API
+    try {
+        const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
+        const response = await fetchFunction('/api/attendance/summary');
+        if (response.ok) {
+            const summary = await response.json();
+            document.getElementById('present-count').textContent = summary.present || 0;
+            document.getElementById('absent-count').textContent = summary.absent || 0;
+            document.getElementById('overtime-hours').textContent = summary.overtime || '0 hrs';
+            document.getElementById('sick-count').textContent = summary.sick || 0;
+        } else {
+            document.getElementById('present-count').textContent = 0;
+            document.getElementById('absent-count').textContent = 0;
+            document.getElementById('overtime-hours').textContent = '0 hrs';
+            document.getElementById('sick-count').textContent = 0;
+        }
+    } catch (err) {
+        document.getElementById('present-count').textContent = 0;
+        document.getElementById('absent-count').textContent = 0;
+        document.getElementById('overtime-hours').textContent = '0 hrs';
+        document.getElementById('sick-count').textContent = 0;
+    }
 }
 
 function setupTimesheetControls() {

@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: optiforce-hr-app
+    env: node
+    plan: free
+    buildCommand: 'npm install'
+    startCommand: 'npm start'
+    envVars:
+      - key: NODE_ENV
+        value: production
+    autoDeploy: true
+    branch: main
+    rootDir: .
+    
+    # Optional: If you want to expose the public directory directly (for static assets)
+    staticPublishPath: public

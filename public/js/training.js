@@ -147,49 +147,7 @@ async function fetchTrainings() {
     }
 }
 
-// Mock data for employees
-const mockEmployees = [
-    {
-        "EMP NO": "EMP001",
-        "Employee Name": "James Wilson",
-        "Designation": "HR Manager",
-        "Department": "HR",
-        "Work Site": "Office",
-        "Joined Date": "2020-03-15"
-    },
-    {
-        "EMP NO": "EMP002",
-        "Employee Name": "Emily Davis",
-        "Designation": "Training Coordinator",
-        "Department": "HR",
-        "Work Site": "Office",
-        "Joined Date": "2021-05-10"
-    },
-    {
-        "EMP NO": "EMP003",
-        "Employee Name": "Michael Brown",
-        "Designation": "IT Specialist",
-        "Department": "IT",
-        "Work Site": "Office",
-        "Joined Date": "2019-11-22"
-    },
-    {
-        "EMP NO": "EMP004",
-        "Employee Name": "Jessica Lee",
-        "Designation": "Marketing Coordinator",
-        "Department": "Marketing",
-        "Work Site": "Site A",
-        "Joined Date": "2022-01-05"
-    },
-    {
-        "EMP NO": "EMP005",
-        "Employee Name": "Robert Taylor",
-        "Designation": "Sales Representative",
-        "Department": "Sales",
-        "Work Site": "Site B",
-        "Joined Date": "2021-08-17"
-    }
-];
+
 
 // Mock data for worksites
 const mockWorksites = [
@@ -218,7 +176,7 @@ async function fetchEmployees() {
         } else {
             // If API fails, use mock data
             console.log('Using mock employee data');
-            employees = mockEmployees;
+            // employees = mockEmployees; // Removed legacy mock data assignment
         }
         updateEmployeeSelection();
         renderParticipants();
@@ -226,7 +184,7 @@ async function fetchEmployees() {
         console.error('Error fetching employees:', err);
         // Use mock data on error
         console.log('Using mock employee data after error');
-        employees = mockEmployees;
+        // employees = mockEmployees; // Removed legacy mock data assignment
         updateEmployeeSelection();
         renderParticipants();
     }

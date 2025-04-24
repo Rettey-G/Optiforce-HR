@@ -73,10 +73,8 @@ async function generateReport() {
         renderReport(reportType, data);
     } catch (err) {
         console.error('Failed to generate report:', err);
-        
-        // Use mock data if API fails
-        const mockData = getMockReportData(reportType);
-        renderReport(reportType, mockData);
+        // Optionally display an error message or empty report, but do not use mock data
+        renderReport(reportType, []);
     }
 }
 
@@ -420,76 +418,7 @@ function exportReport() {
     alert('Report exported successfully');
 }
 
-function getMockReportData(reportType) {
-    // Mock data for different report types
-    switch (reportType) {
-        case 'employee':
-            return {
-                totalEmployees: 45,
-                activeEmployees: 42,
-                departments: [
-                    { id: 1, name: 'IT' },
-                    { id: 2, name: 'HR' },
-                    { id: 3, name: 'Finance' },
-                    { id: 4, name: 'Operations' },
-                    { id: 5, name: 'Marketing' }
-                ],
-                worksites: [
-                    { id: 1, name: 'Main Office' },
-                    { id: 2, name: 'Branch Office' },
-                    { id: 3, name: 'Remote' }
-                ],
-                departmentDistribution: [
-                    { department: 'IT', count: 15 },
-                    { department: 'HR', count: 5 },
-                    { department: 'Finance', count: 8 },
-                    { department: 'Operations', count: 12 },
-                    { department: 'Marketing', count: 5 }
-                ],
-                worksiteDistribution: [
-                    { worksite: 'Main Office', count: 30 },
-                    { worksite: 'Branch Office', count: 10 },
-                    { worksite: 'Remote', count: 5 }
-                ],
-                employees: [
-                    { id: 'EMP001', name: 'John Doe', department: 'IT', designation: 'Software Developer', worksite: 'Main Office', joinDate: '2023-01-15', status: 'Active' },
-                    { id: 'EMP002', name: 'Jane Smith', department: 'HR', designation: 'HR Manager', worksite: 'Main Office', joinDate: '2022-05-10', status: 'Active' },
-                    { id: 'EMP003', name: 'Michael Johnson', department: 'Finance', designation: 'Accountant', worksite: 'Branch Office', joinDate: '2023-03-22', status: 'Active' },
-                    { id: 'EMP004', name: 'Emily Davis', department: 'Marketing', designation: 'Marketing Specialist', worksite: 'Remote', joinDate: '2023-02-01', status: 'Active' },
-                    { id: 'EMP005', name: 'Robert Wilson', department: 'Operations', designation: 'Operations Manager', worksite: 'Main Office', joinDate: '2022-11-15', status: 'Active' }
-                ]
-            };
-        case 'attendance':
-            return {
-                totalEmployees: 45,
-                presentToday: 38,
-                absentToday: 2,
-                onLeave: 5,
-                attendanceTrend: Array.from({ length: 30 }, (_, i) => ({
-                    date: formatDate(new Date(Date.now() - (29 - i) * 24 * 60 * 60 * 1000)),
-                    present: Math.floor(Math.random() * 10) + 35,
-                    absent: Math.floor(Math.random() * 5),
-                    onLeave: Math.floor(Math.random() * 5)
-                })),
-                departmentAttendance: [
-                    { department: 'IT', attendancePercentage: 95 },
-                    { department: 'HR', attendancePercentage: 92 },
-                    { department: 'Finance', attendancePercentage: 98 },
-                    { department: 'Operations', attendancePercentage: 90 },
-                    { department: 'Marketing', attendancePercentage: 94 }
-                ],
-                attendanceSummary: [
-                    { employee: 'John Doe', department: 'IT', presentDays: 28, absentDays: 0, leaveDays: 2, lateArrivals: 1, earlyDepartures: 0, attendancePercentage: 93.3 },
-                    { employee: 'Jane Smith', department: 'HR', presentDays: 27, absentDays: 1, leaveDays: 2, lateArrivals: 2, earlyDepartures: 1, attendancePercentage: 90.0 },
-                    { employee: 'Michael Johnson', department: 'Finance', presentDays: 30, absentDays: 0, leaveDays: 0, lateArrivals: 0, earlyDepartures: 0, attendancePercentage: 100.0 },
-                    { employee: 'Emily Davis', department: 'Marketing', presentDays: 28, absentDays: 0, leaveDays: 2, lateArrivals: 3, earlyDepartures: 1, attendancePercentage: 93.3 },
-                    { employee: 'Robert Wilson', department: 'Operations', presentDays: 26, absentDays: 2, leaveDays: 2, lateArrivals: 4, earlyDepartures: 2, attendancePercentage: 86.7 }
-                ]
-            };
-        default:
-            return { message: 'Mock data not available for this report type' };
-    }
-}
+// Legacy getMockReportData function removed to resolve lint error
 
 // Utility functions
 function formatDate(dateStr) {
