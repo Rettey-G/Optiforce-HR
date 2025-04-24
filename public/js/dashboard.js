@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await fetchDashboardData();
     await loadRecentActivities();
     setupActivitiesModal();
-    setInterval(loadRecentActivities, 30000); // Reload every 30 seconds
+    // Removed interval to prevent constant reloading
 });
 
 // Fetch and process dashboard data
@@ -122,8 +122,13 @@ function createPieChart(elementId, data, title) {
     if (!canvas || !data || data.length === 0) return;
 
     try {
+        // Clear any existing chart
+        if (window.chartInstances && window.chartInstances[elementId]) {
+            window.chartInstances[elementId].destroy();
+        }
+        
         const ctx = canvas.getContext('2d');
-        new Chart(ctx, {
+        const chart = new Chart(ctx, {
             type: 'pie',
             data: {
                 labels: data.map(item => item.name),
@@ -137,7 +142,7 @@ function createPieChart(elementId, data, title) {
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true, // Changed to true to prevent chart dropping
                 plugins: {
                     title: {
                         display: true,
@@ -151,6 +156,10 @@ function createPieChart(elementId, data, title) {
                 }
             }
         });
+        
+        // Store chart instance for future reference
+        if (!window.chartInstances) window.chartInstances = {};
+        window.chartInstances[elementId] = chart;
     } catch (error) {
         console.error(`Error creating pie chart ${elementId}:`, error);
     }
@@ -162,13 +171,18 @@ function createLineChart(canvasId, data, title) {
     if (!canvas || !data || data.length === 0) return;
 
     try {
+        // Clear any existing chart
+        if (window.chartInstances && window.chartInstances[canvasId]) {
+            window.chartInstances[canvasId].destroy();
+        }
+        
         const ctx = canvas.getContext('2d');
         
         // Check if data has month or year property
         const hasMonth = data[0].hasOwnProperty('month');
         const hasYear = data[0].hasOwnProperty('year');
         
-        new Chart(ctx, {
+        const chart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: data.map(item => hasMonth ? item.month : (hasYear ? item.year : '')),
@@ -183,7 +197,7 @@ function createLineChart(canvasId, data, title) {
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true, // Changed to true to prevent chart dropping
                 plugins: {
                     title: {
                         display: true,
@@ -201,6 +215,10 @@ function createLineChart(canvasId, data, title) {
                 }
             }
         });
+        
+        // Store chart instance for future reference
+        if (!window.chartInstances) window.chartInstances = {};
+        window.chartInstances[canvasId] = chart;
     } catch (error) {
         console.error(`Error creating line chart ${canvasId}:`, error);
     }
