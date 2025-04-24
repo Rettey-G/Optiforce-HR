@@ -452,24 +452,29 @@ async function loadAndRenderEmployees() {
     try {
         // Use fetchApi from api-mock.js if available
         const fetchFunction = typeof fetchApi !== 'undefined' ? fetchApi : fetch;
-        const res = await fetchFunction('/api/employees');
-        if (!res.ok) {
-            throw new Error('Failed to fetch employees');
-        }
-        const employees = await res.json();
+        const response = await fetchFunction('/api/employees');
+        const employees = await response.json();
+        
+        // Store all employees globally for filtering
         window._allEmployees = employees;
         
-        // Update worksite filter
-        const worksites = [...new Set(employees.map(emp => emp['Work Site']).filter(Boolean))];
-        const worksiteFilter = document.getElementById('worksiteFilter');
-        worksiteFilter.innerHTML = '<option value="">All Worksites</option>' +
-            worksites.map(site => `<option value="${site}">${site}</option>`).join('');
-        
+        // Render employee grid
         renderEmployeeGrid(employees);
-    } catch (err) {
-        console.error('Failed to load employees:', err);
-        const grid = document.getElementById('employeesGrid');
-        grid.innerHTML = '<div class="error-message">Failed to load employees. Please try again later.</div>';
+        
+        // Populate worksite filter
+        populateWorksiteFilter(employees);
+        
+        // Create charts based on employee data
+        await loadAndCreateCharts();
+        
+    } catch (error) {
+        console.error('Error loading employees:', error);
+        document.getElementById('employeesGrid').innerHTML = `
+            <div class="error-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Failed to load employees. Please try again later.</p>
+            </div>
+        `;
     }
 }
 
@@ -542,21 +547,205 @@ function filterEmployees() {
                             emp['EMP NO']?.toLowerCase().includes(searchValue) ||
                             emp['Designation']?.toLowerCase().includes(searchValue) ||
                             emp['Department']?.toLowerCase().includes(searchValue);
-        const matchesWorksite = !worksiteValue || emp['Work Site'] === worksiteValue;
+        // Fix worksite filter to check both 'Worksite' and 'Work Site' fields
+        const matchesWorksite = !worksiteValue || 
+                              emp['Worksite'] === worksiteValue || 
+                              emp['Work Site'] === worksiteValue;
         return matchesSearch && matchesWorksite;
     });
     
     renderEmployeeGrid(filtered);
+    
+    // Update charts with filtered data
+    loadAndCreateCharts();
 }
 
-// Update dashboard statistics
-function updateDashboardStats(data) {
-    // ... existing code ...
+// Update dashboard statistics and create charts based on employee data
+async function loadAndCreateCharts() {
+    try {
+        const employees = window._allEmployees || [];
+        if (!employees.length) return;
+        
+        // Create department distribution chart
+        createDepartmentChart(employees);
+        
+        // Create worksite distribution chart
+        createWorksiteChart(employees);
+        
+        // Create gender distribution chart
+        createGenderChart(employees);
+    } catch (error) {
+        console.error('Error creating employee charts:', error);
+    }
 }
 
-// Create charts
-function createCharts(data) {
-    // ... existing code ...
+// Create department distribution chart
+function createDepartmentChart(employees) {
+    const canvas = document.getElementById('departmentChart');
+    if (!canvas) return;
+    
+    // Clear any existing chart
+    if (window.chartInstances && window.chartInstances['departmentChart']) {
+        window.chartInstances['departmentChart'].destroy();
+    }
+    
+    // Group employees by department
+    const departmentCounts = {};
+    employees.forEach(emp => {
+        const dept = emp['Department'] || 'Unknown';
+        departmentCounts[dept] = (departmentCounts[dept] || 0) + 1;
+    });
+    
+    // Prepare data for chart
+    const data = Object.entries(departmentCounts).map(([name, count]) => ({ name, count }));
+    
+    // Create chart
+    const ctx = canvas.getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: data.map(item => item.name),
+            datasets: [{
+                data: data.map(item => item.count),
+                backgroundColor: [
+                    '#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b',
+                    '#5a5c69', '#858796', '#6f42c1', '#20c9a6', '#f8f9fc'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Department Distribution',
+                    font: { size: 16 }
+                },
+                legend: {
+                    position: 'bottom',
+                    padding: 20
+                }
+            }
+        }
+    });
+    
+    // Store chart instance
+    if (!window.chartInstances) window.chartInstances = {};
+    window.chartInstances['departmentChart'] = chart;
+}
+
+// Create worksite distribution chart
+function createWorksiteChart(employees) {
+    const canvas = document.getElementById('worksiteChart');
+    if (!canvas) return;
+    
+    // Clear any existing chart
+    if (window.chartInstances && window.chartInstances['worksiteChart']) {
+        window.chartInstances['worksiteChart'].destroy();
+    }
+    
+    // Group employees by worksite
+    const worksiteCounts = {};
+    employees.forEach(emp => {
+        // Check both possible worksite field names
+        const worksite = emp['Worksite'] || emp['Work Site'] || 'Unknown';
+        worksiteCounts[worksite] = (worksiteCounts[worksite] || 0) + 1;
+    });
+    
+    // Prepare data for chart
+    const data = Object.entries(worksiteCounts).map(([name, count]) => ({ name, count }));
+    
+    // Create chart
+    const ctx = canvas.getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: data.map(item => item.name),
+            datasets: [{
+                data: data.map(item => item.count),
+                backgroundColor: [
+                    '#36b9cc', '#1cc88a', '#4e73df', '#f6c23e', '#e74a3b',
+                    '#5a5c69', '#858796', '#6f42c1', '#20c9a6', '#f8f9fc'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Worksite Distribution',
+                    font: { size: 16 }
+                },
+                legend: {
+                    position: 'bottom',
+                    padding: 20
+                }
+            }
+        }
+    });
+    
+    // Store chart instance
+    if (!window.chartInstances) window.chartInstances = {};
+    window.chartInstances['worksiteChart'] = chart;
+}
+
+// Create gender distribution chart
+function createGenderChart(employees) {
+    const canvas = document.getElementById('genderChart');
+    if (!canvas) return;
+    
+    // Clear any existing chart
+    if (window.chartInstances && window.chartInstances['genderChart']) {
+        window.chartInstances['genderChart'].destroy();
+    }
+    
+    // Group employees by gender
+    const genderCounts = {};
+    employees.forEach(emp => {
+        const gender = emp['Gender'] || 'Unknown';
+        genderCounts[gender] = (genderCounts[gender] || 0) + 1;
+    });
+    
+    // Prepare data for chart
+    const data = Object.entries(genderCounts).map(([name, count]) => ({ name, count }));
+    
+    // Create chart
+    const ctx = canvas.getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: data.map(item => item.name),
+            datasets: [{
+                data: data.map(item => item.count),
+                backgroundColor: [
+                    '#4e73df', '#e74a3b', '#1cc88a', '#f6c23e', '#36b9cc',
+                    '#5a5c69', '#858796', '#6f42c1', '#20c9a6', '#f8f9fc'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Gender Distribution',
+                    font: { size: 16 }
+                },
+                legend: {
+                    position: 'bottom',
+                    padding: 20
+                }
+            }
+        }
+    });
+    
+    // Store chart instance
+    if (!window.chartInstances) window.chartInstances = {};
+    window.chartInstances['genderChart'] = chart;
 }
 
 // Department and Worksite Management

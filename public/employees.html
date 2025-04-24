@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/header-footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Add Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div id="nav-placeholder"></div>
@@ -46,6 +48,23 @@
             </button>
         </div>
         <div id="employeesGrid" class="employees-grid"></div>
+        
+        <!-- Employee Charts Section -->
+        <div class="employee-charts">
+            <div class="chart-container">
+                <h3>Department Distribution</h3>
+                <canvas id="departmentChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Worksite Distribution</h3>
+                <canvas id="worksiteChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Gender Distribution</h3>
+                <canvas id="genderChart"></canvas>
+            </div>
+        </div>
+        
         <div id="recentActivities" class="recent-activities"></div>
         <div class="management-section">
             <div class="department-section">
