@@ -98,21 +98,38 @@ function loadDashboardData() {
             document.getElementById('total-departments').textContent = data.departments?.length || 0;
             document.getElementById('total-worksites').textContent = data.worksites?.length || 0;
             document.getElementById('total-users').textContent = data.users?.length || 0;
-            
+
+            // Worksite Distribution Chart
+            // Try to load worksites for mapping names (API or fallback to static JSON)
+            fetchApi('/api/worksites')
+                .then(response => response.json())
+                .catch(() => fetch('data/worksites.json').then(r => r.json()))
+                .then(worksites => {
+                    // Use the worksites map to replace worksite IDs with names in chart data
+                    const worksiteMap = getWorksiteNamesMap(worksites);
+                    const worksiteDist = (data.worksiteDistribution || []).map(item => ({
+                        name: worksiteMap[item.id] || 'Unknown',
+                        count: item.count
+                    }));
+                    createWorksiteChart(worksiteDist);
+                })
+                .catch(() => {
+                    // fallback if all else fails
+                    createWorksiteChart([]);
+                });
+
             // Create department distribution chart
             createDepartmentChart(data.departmentDistribution);
         })
         .catch(error => {
             console.error('Error loading dashboard stats:', error);
             showToast('Error loading dashboard statistics', 'error');
-            
             // Set fallback values
             document.getElementById('total-employees').textContent = '15';
             document.getElementById('total-departments').textContent = '5';
             document.getElementById('total-worksites').textContent = '4';
             document.getElementById('total-users').textContent = '3';
-            
-            // Create fallback chart
+            // fallback demo chart
             createDepartmentChart([
                 { name: 'Executive', count: 1 },
                 { name: 'Operations', count: 6 },
@@ -120,23 +137,20 @@ function loadDashboardData() {
                 { name: 'HR', count: 1 },
                 { name: 'IT', count: 1 }
             ]);
+            createWorksiteChart([]);
         });
-    
+
     // Load recent activities using the fetchApi function from api-mock.js
     fetchApi('/api/dashboard/recent-activities')
         .then(response => response.json())
         .then(activities => {
             const activitiesList = document.getElementById('recent-activities-list');
             if (!activitiesList) return;
-            
             activitiesList.innerHTML = '';
-            
             activities.slice(0, 5).forEach(activity => {
                 const li = document.createElement('li');
                 li.className = 'list-group-item d-flex justify-content-between align-items-center';
-                
                 const badgeClass = getActionBadgeClass(activity.action);
-                
                 li.innerHTML = `
                     <div>
                         <span class="badge ${badgeClass} me-2">${activity.action}</span>
@@ -144,20 +158,16 @@ function loadDashboardData() {
                     </div>
                     <small class="text-muted">${new Date(activity.timestamp).toLocaleString()}</small>
                 `;
-                
                 activitiesList.appendChild(li);
             });
         })
         .catch(error => {
             console.error('Error loading recent activities:', error);
             showToast('Error loading recent activities', 'error');
-            
             // Create fallback activities
             const activitiesList = document.getElementById('recent-activities-list');
             if (!activitiesList) return;
-            
             activitiesList.innerHTML = '';
-            
             const mockActivities = [
                 { id: 1, username: 'admin', action: 'CREATE', description: 'created a new employee record', timestamp: new Date(2025, 3, 23, 15, 30, 0).toISOString() },
                 { id: 2, username: 'admin', action: 'UPDATE', description: 'updated department structure', timestamp: new Date(2025, 3, 23, 14, 45, 0).toISOString() },
@@ -165,13 +175,10 @@ function loadDashboardData() {
                 { id: 4, username: 'admin', action: 'DELETE', description: 'removed an inactive user account', timestamp: new Date(2025, 3, 23, 13, 15, 0).toISOString() },
                 { id: 5, username: 'user2', action: 'VIEW', description: 'viewed employee records', timestamp: new Date(2025, 3, 23, 12, 0, 0).toISOString() }
             ];
-            
             mockActivities.forEach(activity => {
                 const li = document.createElement('li');
                 li.className = 'list-group-item d-flex justify-content-between align-items-center';
-                
                 const badgeClass = getActionBadgeClass(activity.action);
-                
                 li.innerHTML = `
                     <div>
                         <span class="badge ${badgeClass} me-2">${activity.action}</span>
@@ -179,7 +186,6 @@ function loadDashboardData() {
                     </div>
                     <small class="text-muted">${new Date(activity.timestamp).toLocaleString()}</small>
                 `;
-                
                 activitiesList.appendChild(li);
             });
         });
@@ -188,13 +194,10 @@ function loadDashboardData() {
 // Create department distribution chart
 function createDepartmentChart(departmentData) {
     if (!departmentData || departmentData.length === 0) return;
-    
     const ctx = document.getElementById('department-chart').getContext('2d');
-    
     const labels = departmentData.map(item => item.name);
     const data = departmentData.map(item => item.count);
     const backgroundColors = generateChartColors(departmentData.length);
-    
     new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -216,6 +219,36 @@ function createDepartmentChart(departmentData) {
         }
     });
 }
+
+// Create worksite distribution chart
+function createWorksiteChart(worksiteData) {
+    const ctx = document.getElementById('worksite-chart');
+    if (!ctx) return;
+    const chartLabels = worksiteData.map(item => item.name);
+    const chartData = worksiteData.map(item => item.count);
+    const backgroundColors = generateChartColors(worksiteData.length);
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: chartLabels,
+            datasets: [{
+                data: chartData,
+                backgroundColor: backgroundColors,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+}
+
 
 // Generate random colors for chart
 function generateChartColors(count) {

@@ -1,0 +1,43 @@
+[
+  {
+    "_id": "1",
+    "name": "Office",
+    "description": ""
+  },
+  {
+    "_id": "2",
+    "name": "Express 3",
+    "description": ""
+  },
+  {
+    "_id": "3",
+    "name": "Express 1",
+    "description": ""
+  },
+  {
+    "_id": "4",
+    "name": "Bowser",
+    "description": ""
+  },
+  {
+    "_id": "5",
+    "name": "Express 10",
+    "description": ""
+  },
+  {
+    "_id": "6",
+    "name": "Express 7",
+    "description": ""
+  },
+  {
+    "_id": "7",
+    "name": "express 5",
+    "description": ""
+  },
+  {
+    "name": "male office",
+    "location": "male",
+    "managerId": "",
+    "description": "male"
+  }
+]
