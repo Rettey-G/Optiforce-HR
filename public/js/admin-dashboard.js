@@ -105,12 +105,20 @@ function loadDashboardData() {
                 .then(response => response.json())
                 .catch(() => fetch('data/worksites.json').then(r => r.json()))
                 .then(worksites => {
-                    // Use the worksites map to replace worksite IDs with names in chart data
+                    // DEBUG LOGGING
+                    console.log('DEBUG: worksites loaded:', worksites);
                     const worksiteMap = getWorksiteNamesMap(worksites);
-                    const worksiteDist = (data.worksiteDistribution || []).map(item => ({
-                        name: worksiteMap[item.id] || 'Unknown',
-                        count: item.count
-                    }));
+                    console.log('DEBUG: worksiteMap:', worksiteMap);
+                    console.log('DEBUG: data.worksiteDistribution:', data.worksiteDistribution);
+                    const worksiteDist = (data.worksiteDistribution || []).map(item => {
+                        const label = worksiteMap[item.id] || worksiteMap[item._id] || worksiteMap[item.name] || 'Unknown';
+                        console.log(`DEBUG: mapping item`, item, 'to label:', label);
+                        return {
+                            name: label,
+                            count: item.count
+                        };
+                    });
+                    console.log('DEBUG: final worksiteDist for chart:', worksiteDist);
                     createWorksiteChart(worksiteDist);
                 })
                 .catch(() => {
