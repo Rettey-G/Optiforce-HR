@@ -87,8 +87,11 @@ function createCharts(data) {
             createPieChart('departmentChart', deptData, 'Department Distribution');
         }
         
-        // Worksite Chart - use worksiteDistribution if available
-        const worksiteData = data.worksiteDistribution || [];
+        // Worksite Chart - always use worksiteDistribution from API-mock (calculated from employees.json)
+        const worksiteData = (data.worksiteDistribution || []).map(site => ({
+            name: site.name || 'Unknown',
+            count: typeof site.count === 'number' ? site.count : 0
+        }));
         if (worksiteData.length > 0) {
             createPieChart('worksiteChart', worksiteData, 'Worksite Distribution');
         }

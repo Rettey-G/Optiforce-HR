@@ -144,7 +144,7 @@ const apiEndpoints = {
                 emp.worksite ||
                 emp.worksiteName ||
                 ''
-            ).toString().trim();
+            ).toString().trim() || 'Unknown';
         }
         const allWorksites = employees.map(getWorksite).filter(Boolean).filter(w => w.toLowerCase() !== 'o');
         const worksiteCounts = allWorksites.reduce((acc, w) => {
