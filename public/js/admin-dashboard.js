@@ -128,6 +128,24 @@ function loadDashboardData() {
 
             // Create department distribution chart
             createDepartmentChart(data.departmentDistribution);
+
+            // Create employee growth chart
+            const currentYear = new Date().getFullYear();
+            const mockGrowthData = [
+                { month: 'Jan', count: 35 },
+                { month: 'Feb', count: 37 },
+                { month: 'Mar', count: 40 },
+                { month: 'Apr', count: 42 },
+                { month: 'May', count: 45 },
+                { month: 'Jun', count: 47 },
+                { month: 'Jul', count: 48 },
+                { month: 'Aug', count: 49 },
+                { month: 'Sep', count: 49 },
+                { month: 'Oct', count: 49 },
+                { month: 'Nov', count: 49 },
+                { month: 'Dec', count: 49 }
+            ];
+            createEmployeeGrowthChart(mockGrowthData);
         })
         .catch(error => {
             console.error('Error loading dashboard stats:', error);
@@ -146,6 +164,23 @@ function loadDashboardData() {
                 { name: 'IT', count: 1 }
             ]);
             createWorksiteChart([]);
+
+            // Add fallback growth chart
+            const fallbackGrowthData = [
+                { month: 'Jan', count: 10 },
+                { month: 'Feb', count: 12 },
+                { month: 'Mar', count: 15 },
+                { month: 'Apr', count: 15 },
+                { month: 'May', count: 15 },
+                { month: 'Jun', count: 15 },
+                { month: 'Jul', count: 15 },
+                { month: 'Aug', count: 15 },
+                { month: 'Sep', count: 15 },
+                { month: 'Oct', count: 15 },
+                { month: 'Nov', count: 15 },
+                { month: 'Dec', count: 15 }
+            ];
+            createEmployeeGrowthChart(fallbackGrowthData);
         });
 
     // Load recent activities using the fetchApi function from api-mock.js
@@ -228,14 +263,47 @@ function createDepartmentChart(departmentData) {
     });
 }
 
+// Helper function to get worksite names map
+function getWorksiteNamesMap(worksites) {
+    const map = {};
+    worksites.forEach(site => {
+        map[site.id] = site.name;
+        if (site._id) map[site._id] = site.name;
+        map[site.name] = site.name;
+    });
+    return map;
+}
+
 // Create worksite distribution chart
 function createWorksiteChart(worksiteData) {
     const ctx = document.getElementById('worksite-chart');
-    if (!ctx) return;
+    if (!ctx) {
+        console.error('Worksite chart canvas not found');
+        return;
+    }
+
+    // If no data, use fallback data
+    if (!worksiteData || worksiteData.length === 0) {
+        worksiteData = [
+            { name: 'Main Office', count: 20 },
+            { name: 'Branch A', count: 15 },
+            { name: 'Branch B', count: 10 },
+            { name: 'Remote', count: 4 }
+        ];
+    }
+
+    console.log('Creating worksite chart with data:', worksiteData);
+
     const chartLabels = worksiteData.map(item => item.name);
     const chartData = worksiteData.map(item => item.count);
     const backgroundColors = generateChartColors(worksiteData.length);
-    new Chart(ctx, {
+
+    // Destroy existing chart if it exists
+    if (window.worksiteChart) {
+        window.worksiteChart.destroy();
+    }
+
+    window.worksiteChart = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: chartLabels,
@@ -250,13 +318,72 @@ function createWorksiteChart(worksiteData) {
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    position: 'bottom'
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        boxWidth: 12
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.label || '';
+                            const value = context.raw || 0;
+                            return `${label}: ${value} employees`;
+                        }
+                    }
                 }
             }
         }
     });
 }
 
+// Create employee growth chart
+function createEmployeeGrowthChart(growthData) {
+    const ctx = document.getElementById('employee-growth-chart');
+    if (!ctx) return;
+
+    const months = growthData.map(item => item.month);
+    const counts = growthData.map(item => item.count);
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: months,
+            datasets: [{
+                label: 'Employee Count',
+                data: counts,
+                borderColor: '#4e73df',
+                backgroundColor: 'rgba(78, 115, 223, 0.05)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.1)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+}
 
 // Generate random colors for chart
 function generateChartColors(count) {
