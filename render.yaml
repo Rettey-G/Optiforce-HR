@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: optiforce-hr-app
+    name: shop-ease-pro
     env: node
     plan: free
     buildCommand: 'npm install'
