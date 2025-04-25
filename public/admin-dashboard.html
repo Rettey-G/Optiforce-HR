@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/admin-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -207,24 +208,10 @@
                     <div class="col-md-8 mb-4">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title mb-0">Recent Activities</h5>
+                                <h5 class="card-title mb-0">Employee Growth</h5>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Action</th>
-                                                <th>Employee</th>
-                                                <th>Timestamp</th>
-                                                <th>By</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="recent-activities">
-                                            <!-- Activities will be loaded here -->
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <canvas id="employee-growth-chart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -235,6 +222,31 @@
                             </div>
                             <div class="card-body">
                                 <canvas id="department-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Worksite Distribution</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="worksite-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Recent Activities</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush" id="recent-activities-list">
+                                    <!-- Activities will be loaded here -->
+                                </ul>
                             </div>
                         </div>
                     </div>
